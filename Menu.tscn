@@ -36,8 +36,8 @@ label_settings = SubResource("LabelSettings_uubjt")
 layout_mode = 0
 offset_left = 350.0
 offset_top = 250.0
-offset_right = 795.0
-offset_bottom = 340.0
+offset_right = 800.0
+offset_bottom = 350.0
 theme = ExtResource("2_5yleq")
 text = "Start"
 
@@ -45,8 +45,8 @@ text = "Start"
 layout_mode = 0
 offset_left = 350.0
 offset_top = 450.0
-offset_right = 795.0
-offset_bottom = 540.0
+offset_right = 800.0
+offset_bottom = 550.0
 theme = ExtResource("2_5yleq")
 text = "Quit"
 
