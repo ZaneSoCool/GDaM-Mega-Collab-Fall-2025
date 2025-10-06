@@ -1,3 +1,83 @@
-[gd_scene format=3 uid="uid://bwgr8p71ecut2"]
+[gd_scene load_steps=2 format=3 uid="uid://bwgr8p71ecut2"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://b87v47p4kmm67" path="res://icon.svg" id="1_mrrmw"]
+
+[node name="Blackjack" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Enemy" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -273.0
+offset_right = 64.0
+offset_bottom = -145.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_mrrmw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 142.0
+offset_bottom = 66.0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="MinimumBet" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Minimum Bet: 00"
+
+[node name="CurrentBet" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Current Bet: 00"
+
+[node name="Vitality" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Vitality: 00"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.5
+offset_top = -50.0
+offset_right = 128.5
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Hit" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Hit"
+
+[node name="Stand" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Stand"
+
+[node name="Double Down" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Double Down"
