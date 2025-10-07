@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://0to4ij4pfo7v"]
+
+[ext_resource type="Script" uid="uid://2n0xkgllsjv0" path="res://Scripts/card.gd" id="1_pnb5n"]
+
+[node name="Card" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_pnb5n")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bgk3n3w28bp4d"]
 
-[ext_resource type="Script" uid="uid://blptlwe5pceu2" path="res://menuscript.gd" id="1_uubjt"]
+[ext_resource type="Script" uid="uid://blptlwe5pceu2" path="res://Scripts/menuscript.gd" id="1_uubjt"]
 [ext_resource type="Theme" uid="uid://2y7w663pawyl" path="res://menubuttontheme.tres" id="2_5yleq"]
-[ext_resource type="Texture2D" uid="uid://dsl0ajnhvrc1w" path="res://Solid Colour - Burgundy Red.jpg" id="3_ylpcl"]
+[ext_resource type="Texture2D" uid="uid://dsl0ajnhvrc1w" path="res://Assets/Textures/Solid Colour - Burgundy Red.jpg" id="3_ylpcl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uubjt"]
 font_size = 65
