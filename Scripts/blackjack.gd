@@ -1,63 +1,159 @@
-extends Node2D
+extends Control
 
-#Made by Elisa
+#Made by Elisa, Garner, and Zane
 
-var TotalMoney = 50		#How much total money should the player start with?
-var MinimumBet = 5
-var CurrentBet = 5
-var Vitality = 100 		#the health system ??
+#external variables
+@export var minimumBet = 5
+@export var AI_hit_stop = 17
+@export var AI_randomness = 1 #number of hit range where it may randomly hit
 
-
-#variables that reset every round
+#internal variables
 var playerHand = 0
 var dealerHand = 0
 var playerCards = []
 var dealerCards = []
 
-var cardsShuffled = {}		#forgot the exact implementation of this T_T queue??
+var deck : Array[Array] = []
+var playing : bool = true
+var currentBet : int
 
+#references
+@onready var player_cards_visualized: HBoxContainer = $PlayerCardsVisualized
+@onready var dealer_cards_visualized: HBoxContainer = $DealerCardsVisualized
+@onready var play_buttons: HBoxContainer = $playButtons
+@onready var bet_buttons: HBoxContainer = $betButtons
+@onready var line_edit: LineEdit = $betButtons/LineEdit
+@onready var current_bet_label: Label = $VBoxContainer/CurrentBet
+@onready var minimum_bet_label: Label = $VBoxContainer/MinimumBet
+@onready var vitality_label: Label = $VBoxContainer/Vitality
 
-#------------- Game Logic ------------- 
-#--- initializing round ---
-#Hand higher than the dealers but doesn't total to higher than 21
-#place a bet
-#one card given to player and dealer face up
-#another card given to player, another card given to dealer face down
+var cardScene = preload("res://Scenes/Card.tscn")
 
+#--------------Edge Cases---------------#
 
-#--- ONE ROUND LOGIC ---
-#IF cards = 21 --> win 1.5x the bet
-#ELSE IF cards < 21			#while loop here?
-	#IF hit --> give card		#can hit multiple times??
-	#IF stand --> exit the loop and continue game 
-		#IF dealer cards > 17 --> stay
-		#ELSE if cards < 17 ---> +1 card to dealer
-			#IF dealer bust --> player wins double bet
-			#ELSE
-				#IF player hand > dealer hand win double bet
-				#ElSE player lose bet	
-#ELSE card > 21
-	#bust 
+#setup
+func _ready() -> void:
+	#init scene
+	currentBet = minimumBet
+	current_bet_label.text = "Current Bet: " + str(currentBet)
+	line_edit.text = str(currentBet)
+	minimum_bet_label.text = "Minimum Bet: " + str(minimumBet)
+	vitality_label.text = "Vitality: " + str(Global.vitality)
 	
-#--- loop ---
-#CONTINUE UNTIL player no money = lose OR dealer no money = win
+	play_buttons.visible = false
+	
+	#init deck
+	for i in 4:
+		for j in 13:
+			deck.append([j + 1, i + 1])
+	deck.shuffle()
+	
+func startGame():
+	#deal cards
+	dealCard(true, true)
+	dealCard(true, true)
+	dealCard(false, true)
+	dealCard(false, false)
+	
+	play_buttons.visible = true
+	
+func endGame():
+	playing = false
+	play_buttons.visible = false
+	
+	if playerHand > dealerHand and playerHand <= 21:
+		Global.vitality += currentBet
+		print("PlayerWins")
+	else:
+		Global.vitality -= currentBet
+		print("PlayerLost")
+	
+#------------Game/Round Logic------------#
+
+func dealerTurn():
+	play_buttons.visible = false
+	
+	while playing:
+		var randomness = randi_range(-AI_randomness, AI_randomness)
+		if dealerHand < (AI_hit_stop + randomness):
+			dealCard(false, true)
+		else:
+			endGame()
+
+func dealCard(forPlayer : bool, faceUp : bool):
+	var card = cardScene.instantiate()
+	
+	var card_info = deck[deck.size()-1]
+	deck.remove_at(deck.size()-1)
+	
+	card.card_id = card_info[0]
+	card.card_suite = card_info[1]
+	card.faceUp = faceUp
+	
+	if forPlayer:
+		playerCards.append(card)
+		totalHand(forPlayer, card_info)
+		player_cards_visualized.add_child(card)
+	else:
+		dealerCards.append(card)
+		totalHand(forPlayer, card_info)
+		dealer_cards_visualized.add_child(card)
+
+#sums up hand for stuff
+func totalHand(forPlayer : bool, card_info : Array):
+	if forPlayer:
+		if card_info[0] > 10:
+			playerHand += 10
+		elif card_info[0] == 1:
+			if playerHand + 11 > 21:
+				playerHand += 1
+			else:
+				playerHand += 11
+		else:
+			playerHand += card_info[0]
+			
+		if playerHand > 21:
+			endGame()
+	else:
+		if card_info[0] > 10:
+			dealerHand += 10
+		elif card_info[0] == 1:
+			if dealerHand + 11 > 21:
+				dealerHand += 1
+			else:
+				dealerHand += 11
+		else:
+			dealerHand += card_info[0]
+		
+		if dealerHand >= 21:
+			endGame()
 
 #------------- Buttons Pressed -------------
 
 #Hit
 func _on_hit_pressed() -> void:
-	#gives the player another card
-	pass # Replace with function body.
+	dealCard(true, true)
 
 #Stand
 func _on_stand_pressed() -> void:
-	#no more cards wanted; allows game logic to continue
-	pass # Replace with function body.
+	dealerTurn()
 
 #Double Down
 func _on_double_down_pressed() -> void:
-	#double initial bet
-	if (CurrentBet * 2 < TotalMoney):
-		CurrentBet = CurrentBet * 2
+	if currentBet * 2 > Global.vitality:
+		return
 	else:
-		CurrentBet = TotalMoney
+		currentBet *= 2
+		dealCard(true, true)
+		dealerTurn()
+
+func _on_submit_pressed() -> void:
+	var bet = int(line_edit.text)
+	if bet < minimumBet or bet > Global.vitality:
+		return
+		
+	currentBet = bet
+	current_bet_label.text = "Current Bet: " + str(bet)
+	bet_buttons.visible = false
+	
+	startGame()

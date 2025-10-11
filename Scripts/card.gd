@@ -1,13 +1,16 @@
-extends Node2D
+extends Control
+class_name Card
 
 #Made by Kian edited by Zane
 
 @onready var card_texture: TextureRect = $Card_Texture
 @onready var suite_texture: TextureRect = $Suite_Texture
+@onready var back_texture: Texture = preload("res://icon.svg")
 @onready var label: Label = $Label
 
-var card_id : int #1,2.. 11 (Jack), 12 (Queen), 13 (King)
-var card_suite : int #1, 2, 3, 4
+var card_id : int = 1 #1,2.. 11 (Jack), 12 (Queen), 13 (King)
+var card_suite : int = 1 #1, 2, 3, 4
+var faceUp : bool = true
 
 var id_text_dict = {
 	1 : "res://icon.svg",
@@ -33,10 +36,12 @@ var suite_text_dict = {
 }
 
 func _ready() -> void:
-	if card_id == 0: #if card's id isnt setup it destoys itself
-		queue_free()
-		
-	card_texture.texture = id_text_dict[card_id]
-	suite_texture.texture = suite_text_dict[card_id]
+	if faceUp:
+		card_texture.texture = load(id_text_dict[card_id])
+		suite_texture.texture = load(suite_text_dict[card_suite])
+		label.text = str(card_id) + " " + str(card_suite)
+	else:
+		card_texture.texture = back_texture
+		suite_texture.texture = null
 	
-	label.text = str(card_id)
+	

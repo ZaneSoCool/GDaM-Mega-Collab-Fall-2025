@@ -14,3 +14,7 @@ config/name="GDaM Mega-Collab 10/04/25"
 run/main_scene="uid://jt6rn6cxyc2n"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://Global.gd"

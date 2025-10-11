@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwgr8p71ecut2"]
+[gd_scene load_steps=3 format=3 uid="uid://bwgr8p71ecut2"]
 
+[ext_resource type="Script" uid="uid://cy2kydfbv7f33" path="res://Scripts/blackjack.gd" id="1_15ju2"]
 [ext_resource type="Texture2D" uid="uid://b87v47p4kmm67" path="res://icon.svg" id="1_mrrmw"]
 
 [node name="Blackjack" type="Control"]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_15ju2")
 
 [node name="BG" type="TextureRect" parent="."]
 layout_mode = 1
@@ -54,7 +56,7 @@ text = "Current Bet: 00"
 layout_mode = 2
 text = "Vitality: 00"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="playButtons" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -70,14 +72,60 @@ grow_vertical = 0
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="Hit" type="Button" parent="HBoxContainer"]
+[node name="Hit" type="Button" parent="playButtons"]
 layout_mode = 2
 text = "Hit"
 
-[node name="Stand" type="Button" parent="HBoxContainer"]
+[node name="Stand" type="Button" parent="playButtons"]
 layout_mode = 2
 text = "Stand"
 
-[node name="Double Down" type="Button" parent="HBoxContainer"]
+[node name="Double Down" type="Button" parent="playButtons"]
 layout_mode = 2
 text = "Double Down"
+
+[node name="betButtons" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.5
+offset_top = -50.0
+offset_right = 128.5
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="betButtons"]
+layout_mode = 2
+
+[node name="Submit" type="Button" parent="betButtons"]
+layout_mode = 2
+text = "Submit"
+
+[node name="PlayerCardsVisualized" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 553.0
+offset_top = 474.0
+offset_right = 593.0
+offset_bottom = 514.0
+theme_override_constants/separation = 150
+alignment = 1
+
+[node name="DealerCardsVisualized" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 553.0
+offset_top = 231.0
+offset_right = 593.0
+offset_bottom = 271.0
+theme_override_constants/separation = 150
+alignment = 1
+
+[connection signal="pressed" from="playButtons/Hit" to="." method="_on_hit_pressed"]
+[connection signal="pressed" from="playButtons/Stand" to="." method="_on_stand_pressed"]
+[connection signal="pressed" from="playButtons/Double Down" to="." method="_on_double_down_pressed"]
+[connection signal="pressed" from="betButtons/Submit" to="." method="_on_submit_pressed"]
