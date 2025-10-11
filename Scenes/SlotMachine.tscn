@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://jt6rn6cxyc2n"]
+
+[ext_resource type="Texture2D" uid="uid://b87v47p4kmm67" path="res://icon.svg" id="1_12ai4"]
+[ext_resource type="PackedScene" uid="uid://cexqfrush7ds6" path="res://Scenes/Slot.tscn" id="1_bstdy"]
+[ext_resource type="Script" uid="uid://cqdmmdle2yrls" path="res://Scenes/spin_button.gd" id="2_12ai4"]
+
+[node name="SlotMachine" type="Node2D"]
+
+[node name="SlotMachineGraphic" type="Sprite2D" parent="."]
+position = Vector2(188, 73)
+texture = ExtResource("1_12ai4")
+
+[node name="SlotContainer" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Slot1" parent="SlotContainer" instance=ExtResource("1_bstdy")]
+position = Vector2(140, 167)
+
+[node name="Slot2" parent="SlotContainer" instance=ExtResource("1_bstdy")]
+position = Vector2(194, 166)
+
+[node name="Slot3" parent="SlotContainer" instance=ExtResource("1_bstdy")]
+position = Vector2(238, 165)
+
+[node name="SpinButton" type="Button" parent="."]
+offset_left = 141.0
+offset_top = 197.0
+offset_right = 261.0
+offset_bottom = 273.0
+script = ExtResource("2_12ai4")
