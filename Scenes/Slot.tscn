@@ -1,11 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cexqfrush7ds6"]
+[gd_scene load_steps=2 format=3 uid="uid://cexqfrush7ds6"]
 
 [ext_resource type="Script" uid="uid://ddrr4j0n2kst5" path="res://Scenes/Slot.gd" id="1_vqo0j"]
-[ext_resource type="Texture2D" uid="uid://i51mu8aibldp" path="res://Assets/Lemon.jpg" id="2_ncnge"]
-[ext_resource type="Texture2D" uid="uid://0jq2waufbeg7" path="res://Assets/Cherry.jpg" id="3_tngci"]
 
-[node name="Slot" type="Node2D"]
+[node name="Slot" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource("1_vqo0j")
-symbols = Array[Texture]([ExtResource("2_ncnge"), ExtResource("3_tngci")])
 
-[node name="SlotGraphic" type="Sprite2D" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

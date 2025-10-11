@@ -1,13 +1,8 @@
-extends Node2D
+extends Control
+class_name Slot
 
-var SlotGraphic: Sprite2D
+@onready var SlotGraphic = $TextureRect
 
-
-var symbols = [
-	preload("res://assets/Cherry.jpg"),
-	preload("res://assets/Lemon.jpg")
-]
-
-func spin():
+func spin(symbols : Array[Texture]):
 	var random_index = randi() % symbols.size()
 	SlotGraphic.texture = symbols[random_index]
