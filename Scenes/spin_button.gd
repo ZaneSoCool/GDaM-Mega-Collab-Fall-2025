@@ -1,6 +1,10 @@
 extends Button
 
+@onready var slot_container: HBoxContainer = $"../SlotContainer"
 
-func _on_Button_pressed():
-	for slot in $HBoxContainer.get_children():
-		slot.spin()
+@export var symbols : Array[Texture]
+
+func _on_pressed() -> void:
+	for child in slot_container.get_children():
+		if child is Slot:
+			child.spin(symbols)
