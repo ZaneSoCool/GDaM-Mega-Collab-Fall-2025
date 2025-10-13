@@ -3,9 +3,11 @@ extends Control
 #Made by Elisa, Garner, and Zane
 
 #external variables
+@export var dealer_max_vitality : int
 @export var minimumBet = 5
 @export var AI_hit_stop = 17
 @export var AI_randomness = 1 #number of hit range where it may randomly hit
+@export var next_scene : String
 
 #internal variables
 var playerHand = 0
@@ -26,6 +28,8 @@ var currentBet : int
 @onready var current_bet_label: Label = $VBoxContainer/CurrentBet
 @onready var minimum_bet_label: Label = $VBoxContainer/MinimumBet
 @onready var vitality_label: Label = $VBoxContainer/Vitality
+@onready var dealer_vitality_label: Label = $Dealer_Vitality
+@onready var power_ups: HBoxContainer = $PowerUps
 
 var cardScene = preload("res://Scenes/Card.tscn")
 
@@ -33,13 +37,27 @@ var cardScene = preload("res://Scenes/Card.tscn")
 
 #setup
 func _ready() -> void:
-	#init scene
+	#-----------init scene-----------
+	
+	#setup bet and bet text stuff
 	currentBet = minimumBet
 	current_bet_label.text = "Current Bet: " + str(currentBet)
 	line_edit.text = str(currentBet)
 	minimum_bet_label.text = "Minimum Bet: " + str(minimumBet)
-	vitality_label.text = "Vitality: " + str(Global.vitality)
 	
+	#setup correct health
+	vitality_label.text = "Vitality: " + str(Global.vitality)
+	if Global.current_dealer_vitality <= 0:
+		Global.current_dealer_vitality = dealer_max_vitality
+	dealer_vitality_label.text = "Dealer Vitality: " + str(Global.current_dealer_vitality)
+	
+	#setup powerUps
+	for powerUpKey in Global.powerUpQuantityDictionary:
+		if Global.powerUpQuantityDictionary[powerUpKey] > 0:
+			var powerUp = load(Global.powerUpRefDictionary[powerUpKey]).instantiate()
+			power_ups.add_child(powerUp)
+	
+	#make correct buttons visible
 	play_buttons.visible = false
 	
 	#init deck
@@ -63,7 +81,13 @@ func endGame():
 	
 	if playerHand > dealerHand and playerHand <= 21:
 		Global.vitality += currentBet
-		print("PlayerWins")
+		Global.current_dealer_vitality -= currentBet
+		
+		if Global.current_dealer_vitality <= 0:
+			SceneTransition.change_scene_to(next_scene)
+		else:
+			SceneTransition.reload_current_scene()
+		
 	else:
 		Global.vitality -= currentBet
 		print("PlayerLost")
@@ -157,3 +181,26 @@ func _on_submit_pressed() -> void:
 	bet_buttons.visible = false
 	
 	startGame()
+
+#----------------Extra-Powerup-Logic--------------------
+
+func removeCard(forPlayer : bool, cardIndex : int):
+	if playerCards.is_empty(): return
+	
+	var cardToRemove = playerCards[cardIndex]
+	var cardValue = cardToRemove.card_id
+	
+	if cardValue >= 10:
+		playerHand -= 10
+	elif cardValue == 1:
+		if playerHand - 11 <= 0: ##TODO this check is insufficient
+			playerHand -= 1
+		else:
+			playerHand -= 11
+	else:
+		playerHand -= cardValue
+		
+	#get rid of stuff
+	playerCards.remove_at(cardIndex)
+	cardToRemove.queue_free()
+	

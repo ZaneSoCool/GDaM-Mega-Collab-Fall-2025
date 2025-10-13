@@ -35,6 +35,15 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_mrrmw")
 
+[node name="Dealer_Vitality" type="Label" parent="."]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 193.0
+offset_right = 644.0
+offset_bottom = 216.0
+text = "Vitality: 00"
+horizontal_alignment = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 10.0
@@ -124,6 +133,12 @@ offset_right = 593.0
 offset_bottom = 271.0
 theme_override_constants/separation = 150
 alignment = 1
+
+[node name="PowerUps" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 387.0
+offset_right = 340.0
+offset_bottom = 643.0
 
 [connection signal="pressed" from="playButtons/Hit" to="." method="_on_hit_pressed"]
 [connection signal="pressed" from="playButtons/Stand" to="." method="_on_stand_pressed"]
