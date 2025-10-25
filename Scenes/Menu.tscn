@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgk3n3w28bp4d"]
+[gd_scene load_steps=7 format=3 uid="uid://bgk3n3w28bp4d"]
 
 [ext_resource type="Script" uid="uid://blptlwe5pceu2" path="res://Scripts/menuscript.gd" id="1_uubjt"]
 [ext_resource type="Theme" uid="uid://2y7w663pawyl" path="res://menubuttontheme.tres" id="2_5yleq"]
 [ext_resource type="Texture2D" uid="uid://dsl0ajnhvrc1w" path="res://Assets/Textures/Solid Colour - Burgundy Red.jpg" id="3_ylpcl"]
+[ext_resource type="Texture2D" uid="uid://b6d8uujfjlhgt" path="res://Assets/Textures/menus/STARTbutton.png" id="4_ma218"]
+[ext_resource type="Texture2D" uid="uid://d13e4wkr0wyc6" path="res://Assets/Textures/menus/QuitButtonFinal.png" id="5_idohh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uubjt"]
 font_size = 65
@@ -39,7 +41,7 @@ offset_top = 250.0
 offset_right = 800.0
 offset_bottom = 350.0
 theme = ExtResource("2_5yleq")
-text = "Start"
+icon = ExtResource("4_ma218")
 
 [node name="QuitButton" type="Button" parent="."]
 layout_mode = 0
@@ -48,7 +50,7 @@ offset_top = 450.0
 offset_right = 800.0
 offset_bottom = 550.0
 theme = ExtResource("2_5yleq")
-text = "Quit"
+icon = ExtResource("5_idohh")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_button_2_pressed"]

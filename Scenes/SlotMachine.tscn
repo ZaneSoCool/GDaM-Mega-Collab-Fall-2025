@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://cexqfrush7ds6" path="res://Scenes/Slot.tscn" id="1_bstdy"]
 [ext_resource type="Script" uid="uid://cqdmmdle2yrls" path="res://Scripts/spin_button.gd" id="2_12ai4"]
-[ext_resource type="Texture2D" uid="uid://i51mu8aibldp" path="res://Assets/Lemon.jpg" id="4_1n4jc"]
-[ext_resource type="Texture2D" uid="uid://0jq2waufbeg7" path="res://Assets/Cherry.jpg" id="5_ymylu"]
+[ext_resource type="Texture2D" uid="uid://i51mu8aibldp" path="res://Assets/Textures/Lemon.jpg" id="4_1n4jc"]
+[ext_resource type="Texture2D" uid="uid://0jq2waufbeg7" path="res://Assets/Textures/Cherry.jpg" id="5_ymylu"]
 
 [node name="SlotMachine" type="Control"]
 layout_mode = 3

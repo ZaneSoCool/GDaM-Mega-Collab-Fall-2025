@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0jq2waufbeg7"
-path="res://.godot/imported/Cherry.jpg-e6a8a90d79e7291a359d7ae59fbe5229.ctex"
+uid="uid://b6d8uujfjlhgt"
+path="res://.godot/imported/STARTbutton.png-9b3c3e713161bff5a973f4047ff41daf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Cherry.jpg"
-dest_files=["res://.godot/imported/Cherry.jpg-e6a8a90d79e7291a359d7ae59fbe5229.ctex"]
+source_file="res://Assets/Textures/menus/STARTbutton.png"
+dest_files=["res://.godot/imported/STARTbutton.png-9b3c3e713161bff5a973f4047ff41daf.ctex"]
 
 [params]
 
