@@ -140,6 +140,13 @@ offset_top = 387.0
 offset_right = 340.0
 offset_bottom = 643.0
 
+[node name="PowerUpsPassive" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 813.0
+offset_top = 387.0
+offset_right = 1153.0
+offset_bottom = 643.0
+
 [connection signal="pressed" from="playButtons/Hit" to="." method="_on_hit_pressed"]
 [connection signal="pressed" from="playButtons/Stand" to="." method="_on_stand_pressed"]
 [connection signal="pressed" from="playButtons/Double Down" to="." method="_on_double_down_pressed"]

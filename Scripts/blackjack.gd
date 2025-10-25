@@ -14,6 +14,7 @@ var playerHand = 0
 var dealerHand = 0
 var playerCards = []
 var dealerCards = []
+var passivePowerups = []
 
 var deck : Array[Array] = []
 var playing : bool = true
@@ -30,10 +31,9 @@ var currentBet : int
 @onready var vitality_label: Label = $VBoxContainer/Vitality
 @onready var dealer_vitality_label: Label = $Dealer_Vitality
 @onready var power_ups: HBoxContainer = $PowerUps
+@onready var power_ups_passive: HBoxContainer = $PowerUpsPassive
 
 var cardScene = preload("res://Scenes/Card.tscn")
-
-#--------------Edge Cases---------------#
 
 #setup
 func _ready() -> void:
@@ -55,7 +55,12 @@ func _ready() -> void:
 	for powerUpKey in Global.powerUpQuantityDictionary:
 		if Global.powerUpQuantityDictionary[powerUpKey] > 0:
 			var powerUp = load(Global.powerUpRefDictionary[powerUpKey]).instantiate()
-			power_ups.add_child(powerUp)
+			if powerUp.isPassive == false:
+				power_ups.add_child(powerUp)
+			else:
+				power_ups_passive.add_child(powerUp)
+				passivePowerups.append(powerUp)
+				
 	
 	#make correct buttons visible
 	play_buttons.visible = false
@@ -66,13 +71,20 @@ func _ready() -> void:
 			deck.append([j + 1, i + 1])
 	deck.shuffle()
 	
-func startGame():
+func dealCards():
 	#deal cards
 	dealCard(true, true)
 	dealCard(true, true)
 	dealCard(false, true)
 	dealCard(false, false)
 	
+	for powerUp in passivePowerups:
+		powerUp.checkUse()
+				
+	#endgame check
+	if playerHand > 21 or dealerHand >= 21:
+		endGame()
+
 	play_buttons.visible = true
 	
 func endGame():
@@ -90,6 +102,7 @@ func endGame():
 		
 	else:
 		Global.vitality -= currentBet
+		SceneTransition.change_scene_to("res://Scenes/Menu.tscn")
 		print("PlayerLost")
 	
 #------------Game/Round Logic------------#
@@ -135,9 +148,6 @@ func totalHand(forPlayer : bool, card_info : Array):
 				playerHand += 11
 		else:
 			playerHand += card_info[0]
-			
-		if playerHand > 21:
-			endGame()
 	else:
 		if card_info[0] > 10:
 			dealerHand += 10
@@ -148,9 +158,6 @@ func totalHand(forPlayer : bool, card_info : Array):
 				dealerHand += 11
 		else:
 			dealerHand += card_info[0]
-		
-		if dealerHand >= 21:
-			endGame()
 
 #------------- Buttons Pressed -------------
 
@@ -180,7 +187,7 @@ func _on_submit_pressed() -> void:
 	current_bet_label.text = "Current Bet: " + str(bet)
 	bet_buttons.visible = false
 	
-	startGame()
+	dealCards()
 
 #----------------Extra-Powerup-Logic--------------------
 

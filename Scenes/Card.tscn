@@ -21,9 +21,3 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_3p273")
-
-[node name="Suite_Texture" type="TextureRect" parent="."]
-self_modulate = Color(0.29411766, 1, 1, 0.36078432)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0

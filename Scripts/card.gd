@@ -12,7 +12,7 @@ var card_id : int = 1 #1,2.. 11 (Jack), 12 (Queen), 13 (King)
 var card_suite : int = 1 #1, 2, 3, 4
 var faceUp : bool = true
 
-var id_text_dict = {
+var bone_id_text_dict = {
 	1 : "res://icon.svg",
 	2 : "res://icon.svg",
 	3 : "res://icon.svg",
@@ -28,20 +28,71 @@ var id_text_dict = {
 	13 : "res://icon.svg"
 }
 
-var suite_text_dict = {
+var teeth_id_text_dict = {
 	1 : "res://icon.svg",
 	2 : "res://icon.svg",
 	3 : "res://icon.svg",
 	4 : "res://icon.svg",
+	5 : "res://icon.svg",
+	6 : "res://icon.svg",
+	7 : "res://icon.svg",
+	8 : "res://icon.svg",
+	9 : "res://icon.svg",
+	10 : "res://icon.svg",
+	11 : "res://icon.svg",
+	12 : "res://icon.svg",
+	13 : "res://icon.svg"
+}
+
+var eye_id_text_dict = {
+	1 : "res://icon.svg",
+	2 : "res://icon.svg",
+	3 : "res://icon.svg",
+	4 : "res://icon.svg",
+	5 : "res://icon.svg",
+	6 : "res://icon.svg",
+	7 : "res://icon.svg",
+	8 : "res://icon.svg",
+	9 : "res://icon.svg",
+	10 : "res://icon.svg",
+	11 : "res://icon.svg",
+	12 : "res://icon.svg",
+	13 : "res://icon.svg"
+}
+
+var blood_id_text_dict = {
+	1 : "res://icon.svg",
+	2 : "res://icon.svg",
+	3 : "res://icon.svg",
+	4 : "res://icon.svg",
+	5 : "res://icon.svg",
+	6 : "res://icon.svg",
+	7 : "res://icon.svg",
+	8 : "res://icon.svg",
+	9 : "res://icon.svg",
+	10 : "res://icon.svg",
+	11 : "res://icon.svg",
+	12 : "res://icon.svg",
+	13 : "res://icon.svg"
 }
 
 func _ready() -> void:
 	if faceUp:
-		card_texture.texture = load(id_text_dict[card_id])
-		suite_texture.texture = load(suite_text_dict[card_suite])
+		card_texture.texture = load(get_card_texture(card_id, card_suite))
 		label.text = str(card_id) + " " + str(card_suite)
 	else:
 		card_texture.texture = back_texture
-		suite_texture.texture = null
+		
+func get_card_texture(value : int, suit : int):
+	if suit == 1:
+		return bone_id_text_dict[value]
+	elif suit == 2:
+		return bone_id_text_dict[value]
+	elif suit == 3:
+		return bone_id_text_dict[value]
+	elif suit == 4:
+		return bone_id_text_dict[value]
+	else:
+		"Uh Oh"
 	
 	

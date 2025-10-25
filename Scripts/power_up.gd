@@ -5,11 +5,12 @@ class_name PowerUp
 #call use() on a powerup and it will call it here, then it will call localUse() for powerup specific stuff
 
 @export var powerUpName : String
+@export var isPassive : bool
 
 func _ready() -> void:
 	self.text = powerUpName
 
-func use():
+func use():	
 	#updates quantity of this powerUp left
 	Global.powerUpQuantityDictionary[powerUpName] -= 1
 	
@@ -23,4 +24,8 @@ func localUse():
 	pass
 
 func _on_pressed() -> void:
+	if isPassive: return
 	use()
+
+func checkUse():
+	pass

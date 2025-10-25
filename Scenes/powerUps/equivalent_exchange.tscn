@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjv7xvgpyvdqs"]
+
+[ext_resource type="Script" uid="uid://bryetamxu3rfe" path="res://Scripts/powerUps/equivelant_exchange.gd" id="1_qop0c"]
+
+[node name="equivExchange" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_qop0c")
+powerUpName = "Equivalent Exchange"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
