@@ -1,31 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://jt6rn6cxyc2n"]
+[gd_scene load_steps=8 format=3 uid="uid://jt6rn6cxyc2n"]
 
 [ext_resource type="PackedScene" uid="uid://cexqfrush7ds6" path="res://Scenes/Slot.tscn" id="1_bstdy"]
-[ext_resource type="Script" uid="uid://cqdmmdle2yrls" path="res://Scripts/spin_button.gd" id="2_12ai4"]
+[ext_resource type="Script" uid="uid://cqdmmdle2yrls" path="res://Scripts/slotMachine.gd" id="2_12ai4"]
 [ext_resource type="Texture2D" uid="uid://i51mu8aibldp" path="res://Assets/Textures/Lemon.jpg" id="4_1n4jc"]
+[ext_resource type="Texture2D" uid="uid://b87v47p4kmm67" path="res://icon.svg" id="5_46fj6"]
 [ext_resource type="Texture2D" uid="uid://0jq2waufbeg7" path="res://Assets/Textures/Cherry.jpg" id="5_ymylu"]
+[ext_resource type="Texture2D" uid="uid://b6d8uujfjlhgt" path="res://Assets/Textures/menus/STARTbutton.png" id="6_pgvtv"]
+[ext_resource type="Texture2D" uid="uid://dsl0ajnhvrc1w" path="res://Assets/Textures/Solid Colour - Burgundy Red.jpg" id="7_dq6t6"]
 
 [node name="SlotMachine" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="SlotContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 300.0
-offset_right = 769.0
-offset_bottom = 207.0
-theme_override_constants/separation = 150
-
-[node name="Slot1" parent="SlotContainer" instance=ExtResource("1_bstdy")]
-layout_mode = 2
-
-[node name="Slot2" parent="SlotContainer" instance=ExtResource("1_bstdy")]
-layout_mode = 2
-
-[node name="Slot3" parent="SlotContainer" instance=ExtResource("1_bstdy")]
-layout_mode = 2
+script = ExtResource("2_12ai4")
+symbols = Array[Texture]([ExtResource("5_ymylu"), ExtResource("4_1n4jc"), ExtResource("5_46fj6"), ExtResource("6_pgvtv"), ExtResource("7_dq6t6")])
 
 [node name="SpinButton" type="Button" parent="."]
 layout_mode = 0
@@ -33,7 +22,51 @@ offset_left = 141.0
 offset_top = 197.0
 offset_right = 261.0
 offset_bottom = 273.0
-script = ExtResource("2_12ai4")
-symbols = Array[Texture]([ExtResource("4_1n4jc"), ExtResource("5_ymylu")])
 
-[connection signal="pressed" from="SpinButton" to="SpinButton" method="_on_pressed"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_constants/separation = 150
+
+[node name="SlotContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 150
+
+[node name="Slot1" parent="VBoxContainer/SlotContainer" instance=ExtResource("1_bstdy")]
+layout_mode = 2
+
+[node name="Slot2" parent="VBoxContainer/SlotContainer" instance=ExtResource("1_bstdy")]
+layout_mode = 2
+
+[node name="Slot3" parent="VBoxContainer/SlotContainer" instance=ExtResource("1_bstdy")]
+layout_mode = 2
+
+[node name="SlotContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 150
+
+[node name="Slot1" parent="VBoxContainer/SlotContainer2" instance=ExtResource("1_bstdy")]
+layout_mode = 2
+
+[node name="Slot2" parent="VBoxContainer/SlotContainer2" instance=ExtResource("1_bstdy")]
+layout_mode = 2
+
+[node name="Slot3" parent="VBoxContainer/SlotContainer2" instance=ExtResource("1_bstdy")]
+layout_mode = 2
+
+[node name="SlotContainer3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 150
+
+[node name="Slot1" parent="VBoxContainer/SlotContainer3" instance=ExtResource("1_bstdy")]
+layout_mode = 2
+
+[node name="Slot2" parent="VBoxContainer/SlotContainer3" instance=ExtResource("1_bstdy")]
+layout_mode = 2
+
+[node name="Slot3" parent="VBoxContainer/SlotContainer3" instance=ExtResource("1_bstdy")]
+layout_mode = 2
+
+[connection signal="pressed" from="SpinButton" to="." method="_on_spin_button_pressed"]
