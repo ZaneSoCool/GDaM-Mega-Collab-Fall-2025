@@ -1,0 +1,153 @@
+[gd_scene load_steps=3 format=3 uid="uid://5l8ea5ufrge5"]
+
+[ext_resource type="Script" uid="uid://cy2kydfbv7f33" path="res://Scripts/blackjack.gd" id="1_ctnfv"]
+[ext_resource type="Texture2D" uid="uid://b87v47p4kmm67" path="res://icon.svg" id="2_y3ccu"]
+
+[node name="1_1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ctnfv")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Enemy" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -273.0
+offset_right = 64.0
+offset_bottom = -145.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_y3ccu")
+
+[node name="Dealer_Vitality" type="Label" parent="."]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 193.0
+offset_right = 644.0
+offset_bottom = 216.0
+text = "Vitality: 00"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 142.0
+offset_bottom = 66.0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="MinimumBet" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Minimum Bet: 00"
+
+[node name="CurrentBet" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Current Bet: 00"
+
+[node name="Vitality" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Vitality: 00"
+
+[node name="playButtons" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.5
+offset_top = -50.0
+offset_right = 128.5
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Hit" type="Button" parent="playButtons"]
+layout_mode = 2
+text = "Hit"
+
+[node name="Stand" type="Button" parent="playButtons"]
+layout_mode = 2
+text = "Stand"
+
+[node name="Double Down" type="Button" parent="playButtons"]
+layout_mode = 2
+text = "Double Down"
+
+[node name="betButtons" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.5
+offset_top = -50.0
+offset_right = 128.5
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="betButtons"]
+layout_mode = 2
+
+[node name="Submit" type="Button" parent="betButtons"]
+layout_mode = 2
+text = "Submit"
+
+[node name="PlayerCardsVisualized" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 553.0
+offset_top = 474.0
+offset_right = 593.0
+offset_bottom = 514.0
+theme_override_constants/separation = 150
+alignment = 1
+
+[node name="DealerCardsVisualized" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 553.0
+offset_top = 231.0
+offset_right = 593.0
+offset_bottom = 271.0
+theme_override_constants/separation = 150
+alignment = 1
+
+[node name="PowerUps" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 387.0
+offset_right = 340.0
+offset_bottom = 643.0
+
+[node name="PowerUpsPassive" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 813.0
+offset_top = 387.0
+offset_right = 1153.0
+offset_bottom = 643.0
+
+[connection signal="pressed" from="playButtons/Hit" to="." method="_on_hit_pressed"]
+[connection signal="pressed" from="playButtons/Stand" to="." method="_on_stand_pressed"]
+[connection signal="pressed" from="playButtons/Double Down" to="." method="_on_double_down_pressed"]
+[connection signal="pressed" from="betButtons/Submit" to="." method="_on_submit_pressed"]
