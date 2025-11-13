@@ -64,6 +64,7 @@ dialog_text = "You will lose any progress.
 Are you sure?"
 cancel_button_text = "Nuh Uh"
 
+[connection signal="folding_changed" from="FoldableContainer" to="." method="_on_foldable_container_folding_changed"]
 [connection signal="pressed" from="FoldableContainer/VBoxContainer/FullscreenButton" to="." method="_on_check_button_pressed"]
 [connection signal="pressed" from="FoldableContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="canceled" from="FoldableContainer/VBoxContainer/Button/ConfirmationDialog" to="." method="_on_confirmation_dialog_canceled"]

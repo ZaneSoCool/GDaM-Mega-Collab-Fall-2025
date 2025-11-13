@@ -16,17 +16,24 @@ func _ready() -> void:
 		fullscreen_button.button_pressed = false
 	
 func _on_button_pressed() -> void:
+	SoundController.buttonPressed()
 	confirmation_dialog.visible = true
 
 func _on_confirmation_dialog_canceled() -> void:
+	SoundController.buttonPressed()
 	foldable_container.folded = true
 	confirmation_dialog.visible = false
 	
 func _on_confirmation_dialog_confirmed() -> void:
+	SoundController.buttonPressed()
 	SceneTransition.change_scene_to("res://Scenes/Menu.tscn")
 
 func _on_check_button_pressed() -> void:
+	SoundController.buttonPressed()
 	if fullscreen_button.button_pressed == true:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+
+func _on_foldable_container_folding_changed(is_folded: bool) -> void:
+	SoundController.buttonPressed()
