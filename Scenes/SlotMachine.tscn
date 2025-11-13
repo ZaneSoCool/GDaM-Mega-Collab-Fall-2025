@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://jt6rn6cxyc2n"]
+[gd_scene load_steps=9 format=3 uid="uid://jt6rn6cxyc2n"]
 
 [ext_resource type="PackedScene" uid="uid://cexqfrush7ds6" path="res://Scenes/Slot.tscn" id="1_bstdy"]
 [ext_resource type="Script" uid="uid://cqdmmdle2yrls" path="res://Scripts/slotMachine.gd" id="2_12ai4"]
-[ext_resource type="Texture2D" uid="uid://i51mu8aibldp" path="res://Assets/Textures/Lemon.jpg" id="4_1n4jc"]
-[ext_resource type="Texture2D" uid="uid://b87v47p4kmm67" path="res://icon.svg" id="5_46fj6"]
-[ext_resource type="Texture2D" uid="uid://0jq2waufbeg7" path="res://Assets/Textures/Cherry.jpg" id="5_ymylu"]
-[ext_resource type="Texture2D" uid="uid://b6d8uujfjlhgt" path="res://Assets/Textures/menus/STARTbutton.png" id="6_pgvtv"]
+[ext_resource type="Texture2D" uid="uid://c53iwlvjns40d" path="res://Assets/Textures/slotMachine/eyeSlot.png" id="2_pgvtv"]
+[ext_resource type="Texture2D" uid="uid://bbv7v12asxkvl" path="res://Assets/Textures/slotMachine/boneSlot.png" id="3_dq6t6"]
+[ext_resource type="Texture2D" uid="uid://c24x8jh8hukjj" path="res://Assets/Textures/slotMachine/bloodSlot.png" id="4_glh05"]
+[ext_resource type="Texture2D" uid="uid://ctwj4juat6dvt" path="res://Assets/Textures/slotMachine/toothSlot.png" id="5_7juld"]
+[ext_resource type="Texture2D" uid="uid://dy3ajjkoi4274" path="res://Assets/Textures/slotMachine/jokerSlot.png" id="6_dq6t6"]
 [ext_resource type="Texture2D" uid="uid://dsl0ajnhvrc1w" path="res://Assets/Textures/Solid Colour - Burgundy Red.jpg" id="7_dq6t6"]
 
 [node name="SlotMachine" type="Control"]
@@ -14,86 +15,93 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_12ai4")
-symbols = Array[Texture]([ExtResource("5_ymylu"), ExtResource("4_1n4jc"), ExtResource("5_46fj6"), ExtResource("6_pgvtv"), ExtResource("7_dq6t6")])
+symbols = Array[Texture]([ExtResource("5_7juld"), ExtResource("3_dq6t6"), ExtResource("2_pgvtv"), ExtResource("4_glh05"), ExtResource("6_dq6t6")])
 
 [node name="SpinButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 325.0
+offset_left = 703.0
 offset_top = 509.0
-offset_right = 445.0
+offset_right = 823.0
 offset_bottom = 584.99994
 text = "spin"
 
 [node name="PurchaseTopButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 935.0
+offset_left = 278.0
 offset_top = 509.0
-offset_right = 1055.0
+offset_right = 398.0
 offset_bottom = 584.99994
-text = "Purchase Top"
+text = "Purchase Top $20"
 
 [node name="PurchaseBottomButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 751.0
+offset_left = 478.0
 offset_top = 509.0
-offset_right = 893.0
+offset_right = 652.0
 offset_bottom = 584.99994
-text = "Purchase Bottom"
+text = "Purchase Bottom $20"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 1135.0
-offset_bottom = 420.0
+offset_left = 450.0
+offset_top = 111.0
+offset_right = 614.0
+offset_bottom = 275.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/separation = 150
+theme_override_constants/h_separation = 60
+theme_override_constants/v_separation = 60
+columns = 3
 
-[node name="SlotContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 150
-
-[node name="Slot1" parent="VBoxContainer/SlotContainer" instance=ExtResource("1_bstdy")]
+[node name="Slot1" parent="GridContainer" instance=ExtResource("1_bstdy")]
 layout_mode = 2
 
-[node name="Slot2" parent="VBoxContainer/SlotContainer" instance=ExtResource("1_bstdy")]
+[node name="Slot2" parent="GridContainer" instance=ExtResource("1_bstdy")]
 layout_mode = 2
 
-[node name="Slot3" parent="VBoxContainer/SlotContainer" instance=ExtResource("1_bstdy")]
+[node name="Slot3" parent="GridContainer" instance=ExtResource("1_bstdy")]
 layout_mode = 2
 
-[node name="SlotContainer2" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 150
-
-[node name="Slot1" parent="VBoxContainer/SlotContainer2" instance=ExtResource("1_bstdy")]
+[node name="Slot4" parent="GridContainer" instance=ExtResource("1_bstdy")]
 layout_mode = 2
 
-[node name="Slot2" parent="VBoxContainer/SlotContainer2" instance=ExtResource("1_bstdy")]
+[node name="Slot5" parent="GridContainer" instance=ExtResource("1_bstdy")]
 layout_mode = 2
 
-[node name="Slot3" parent="VBoxContainer/SlotContainer2" instance=ExtResource("1_bstdy")]
+[node name="Slot6" parent="GridContainer" instance=ExtResource("1_bstdy")]
 layout_mode = 2
 
-[node name="SlotContainer3" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 150
-
-[node name="Slot1" parent="VBoxContainer/SlotContainer3" instance=ExtResource("1_bstdy")]
+[node name="Slot7" parent="GridContainer" instance=ExtResource("1_bstdy")]
 layout_mode = 2
 
-[node name="Slot2" parent="VBoxContainer/SlotContainer3" instance=ExtResource("1_bstdy")]
+[node name="Slot8" parent="GridContainer" instance=ExtResource("1_bstdy")]
 layout_mode = 2
 
-[node name="Slot3" parent="VBoxContainer/SlotContainer3" instance=ExtResource("1_bstdy")]
+[node name="Slot9" parent="GridContainer" instance=ExtResource("1_bstdy")]
 layout_mode = 2
+
+[node name="topNotPurchased" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 453.0
+offset_top = 145.0
+offset_right = 651.0
+offset_bottom = 152.0
+texture = ExtResource("7_dq6t6")
+expand_mode = 1
+
+[node name="bottomNotPurchased" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 453.0
+offset_top = 270.0
+offset_right = 651.0
+offset_bottom = 277.0
+texture = ExtResource("7_dq6t6")
+expand_mode = 1
 
 [connection signal="pressed" from="SpinButton" to="." method="_on_spin_button_pressed"]
 [connection signal="pressed" from="PurchaseTopButton" to="." method="_on_purchase_top_button_pressed"]
