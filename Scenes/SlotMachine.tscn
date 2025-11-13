@@ -18,15 +18,41 @@ symbols = Array[Texture]([ExtResource("5_ymylu"), ExtResource("4_1n4jc"), ExtRes
 
 [node name="SpinButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 141.0
-offset_top = 197.0
-offset_right = 261.0
-offset_bottom = 273.0
+offset_left = 325.0
+offset_top = 509.0
+offset_right = 445.0
+offset_bottom = 584.99994
+text = "spin"
+
+[node name="PurchaseTopButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 935.0
+offset_top = 509.0
+offset_right = 1055.0
+offset_bottom = 584.99994
+text = "Purchase Top"
+
+[node name="PurchaseBottomButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 751.0
+offset_top = 509.0
+offset_right = 893.0
+offset_bottom = 584.99994
+text = "Purchase Bottom"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 1135.0
+offset_bottom = 420.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/separation = 150
 
@@ -70,3 +96,5 @@ layout_mode = 2
 layout_mode = 2
 
 [connection signal="pressed" from="SpinButton" to="." method="_on_spin_button_pressed"]
+[connection signal="pressed" from="PurchaseTopButton" to="." method="_on_purchase_top_button_pressed"]
+[connection signal="pressed" from="PurchaseBottomButton" to="." method="_on_purchase_bottom_button_pressed"]
