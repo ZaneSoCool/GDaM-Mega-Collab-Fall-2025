@@ -18,4 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://Scripts/Global.gd"
-SceneTransition="*res://Scenes/scene_transition.tscn"
+SceneTransition="*res://Scenes/Global/scene_transition.tscn"
+SoundController="*res://Scenes/Global/SoundController.tscn"
+Settings="*res://Scenes/Global/settings.tscn"

@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://ixy763y13221"]
+
+[ext_resource type="Script" uid="uid://cnhiorc1fmddt" path="res://Scenes/Global/settings.gd" id="1_5hyo8"]
+[ext_resource type="Script" uid="uid://kgqhd0ntrw7l" path="res://Scenes/Global/volumeSlider.gd" id="1_8xyrf"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5hyo8")
+
+[node name="FoldableContainer" type="FoldableContainer" parent="."]
+layout_mode = 0
+offset_right = 116.0
+offset_bottom = 75.0
+title = "Settings"
+title_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FoldableContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Music Label" type="Label" parent="FoldableContainer/VBoxContainer"]
+layout_mode = 2
+text = "Music Volume"
+
+[node name="HSlider (Music)" type="HSlider" parent="FoldableContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("1_8xyrf")
+bus_name = "Music"
+
+[node name="SFX Label" type="Label" parent="FoldableContainer/VBoxContainer"]
+layout_mode = 2
+text = "SFX Volume"
+
+[node name="HSlider (SFX)" type="HSlider" parent="FoldableContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("1_8xyrf")
+bus_name = "SFX"
+
+[node name="Button" type="Button" parent="FoldableContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="FoldableContainer/VBoxContainer/Button"]
+oversampling_override = 1.0
+initial_position = 1
+size = Vector2i(220, 106)
+visible = true
+ok_button_text = "Yuh Huh"
+dialog_text = "You will lose any progress.
+Are you sure?"
+cancel_button_text = "Nuh Uh"
+
+[connection signal="pressed" from="FoldableContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="canceled" from="FoldableContainer/VBoxContainer/Button/ConfirmationDialog" to="." method="_on_confirmation_dialog_canceled"]
+[connection signal="confirmed" from="FoldableContainer/VBoxContainer/Button/ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]

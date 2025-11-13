@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dq3vfjaheg03h"]
+
+[node name="SoundController" type="Node"]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
