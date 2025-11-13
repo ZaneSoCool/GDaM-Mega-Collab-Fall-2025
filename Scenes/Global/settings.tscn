@@ -13,9 +13,13 @@ grow_vertical = 2
 script = ExtResource("1_5hyo8")
 
 [node name="FoldableContainer" type="FoldableContainer" parent="."]
-layout_mode = 0
-offset_right = 116.0
-offset_bottom = 75.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -117.0
+offset_bottom = 188.0
+grow_horizontal = 0
 title = "Settings"
 title_alignment = 1
 
@@ -23,6 +27,10 @@ title_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
+
+[node name="FullscreenButton" type="CheckButton" parent="FoldableContainer/VBoxContainer"]
+layout_mode = 2
+text = "Fullscreen"
 
 [node name="Music Label" type="Label" parent="FoldableContainer/VBoxContainer"]
 layout_mode = 2
@@ -56,6 +64,7 @@ dialog_text = "You will lose any progress.
 Are you sure?"
 cancel_button_text = "Nuh Uh"
 
+[connection signal="pressed" from="FoldableContainer/VBoxContainer/FullscreenButton" to="." method="_on_check_button_pressed"]
 [connection signal="pressed" from="FoldableContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="canceled" from="FoldableContainer/VBoxContainer/Button/ConfirmationDialog" to="." method="_on_confirmation_dialog_canceled"]
 [connection signal="confirmed" from="FoldableContainer/VBoxContainer/Button/ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]
