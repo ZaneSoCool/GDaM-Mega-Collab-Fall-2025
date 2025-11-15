@@ -39,6 +39,10 @@ var cardScene = preload("res://Scenes/Card.tscn")
 func _ready() -> void:
 	#-----------init scene-----------
 	
+	#sets up dealer health
+	if Global.current_dealer_vitality <= 0:
+		Global.current_dealer_vitality = dealer_max_vitality
+	
 	#setup bet and bet text stuff
 	currentBet = minimumBet
 	current_bet_label.text = "Current Bet: " + str(currentBet)
@@ -91,19 +95,27 @@ func endGame():
 	playing = false
 	play_buttons.visible = false
 	
-	if playerHand > dealerHand and playerHand <= 21:
+	if dealerHand > 21 or (playerHand > dealerHand and playerHand <= 21):
 		Global.vitality += currentBet
 		Global.current_dealer_vitality -= currentBet
 		
 		if Global.current_dealer_vitality <= 0:
+			Global.current_dealer_vitality = 0
+			print("next level")
 			SceneTransition.change_scene_to(next_scene)
 		else:
+			print("player won : new round")
 			SceneTransition.reload_current_scene()
 		
 	else:
 		Global.vitality -= currentBet
-		SceneTransition.change_scene_to("res://Scenes/Menu.tscn")
-		print("PlayerLost")
+		
+		if Global.vitality <= 0:
+			print("game over")
+			SceneTransition.change_scene_to("res://Scenes/Menu.tscn")
+		else:
+			print("player lost : new round")
+			SceneTransition.reload_current_scene()
 	
 #------------Game/Round Logic------------#
 

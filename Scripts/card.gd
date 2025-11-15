@@ -4,7 +4,6 @@ class_name Card
 #Made by Kian edited by Zane
 
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var suite_texture: TextureRect = $Suite_Texture
 @onready var back_texture: Texture = preload("res://icon.svg")
 @onready var label: Label = $Label
 

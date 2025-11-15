@@ -1,6 +1,6 @@
 extends Node
 
-var current_dealer_vitality : int = 100
+var current_dealer_vitality : int = 0
 var vitality : int = 100
 
 #stores quantity of power ups player has

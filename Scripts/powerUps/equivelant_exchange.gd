@@ -11,3 +11,12 @@ func localUse():
 
 	#deal a new card
 	blackJackScene.dealCard(true, true)
+
+func canUse():
+	#get variables
+	var blackJackScene = get_tree().current_scene
+
+	if !blackJackScene.playerCards.is_empty():
+		return true
+	else:
+		return false

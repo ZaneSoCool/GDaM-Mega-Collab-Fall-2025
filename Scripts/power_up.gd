@@ -10,7 +10,9 @@ class_name PowerUp
 func _ready() -> void:
 	self.text = powerUpName
 
-func use():	
+func use():
+	if canUse() != null and !canUse(): return
+	
 	#updates quantity of this powerUp left
 	Global.powerUpQuantityDictionary[powerUpName] -= 1
 	
@@ -27,5 +29,8 @@ func _on_pressed() -> void:
 	if isPassive: return
 	use()
 
-func checkUse():
+func checkUse(): #checks if card should be used automatically
+	pass
+
+func canUse(): #returns true or false based on if powerup is allowed to be used
 	pass
