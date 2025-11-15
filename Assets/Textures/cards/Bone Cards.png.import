@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b531nso48gwxx"
-path="res://.godot/imported/eye cards.png-fb5b7aa4a8def23e42d717b717f47b86.ctex"
+uid="uid://djmtnsnm8rp7a"
+path="res://.godot/imported/Bone Cards.png-98f571ffd2c74794041c02165cced7ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/eye cards.png"
-dest_files=["res://.godot/imported/eye cards.png-fb5b7aa4a8def23e42d717b717f47b86.ctex"]
+source_file="res://Assets/Textures/cards/Bone Cards.png"
+dest_files=["res://.godot/imported/Bone Cards.png-98f571ffd2c74794041c02165cced7ee.ctex"]
 
 [params]
 

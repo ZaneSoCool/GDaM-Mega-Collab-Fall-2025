@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3ed1vvxea3t7"
-path="res://.godot/imported/backOfCard.png-2e4c379bb5abe87b5df2e772fc7f8ab8.ctex"
+uid="uid://cdjc0rk7iuucq"
+path="res://.godot/imported/finalBone.png-a59170071909dc0fdfabad5c171b5aa9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/backOfCard.png"
-dest_files=["res://.godot/imported/backOfCard.png-2e4c379bb5abe87b5df2e772fc7f8ab8.ctex"]
+source_file="res://Assets/Textures/Temp Bosses/finalBone.png"
+dest_files=["res://.godot/imported/finalBone.png-a59170071909dc0fdfabad5c171b5aa9.ctex"]
 
 [params]
 

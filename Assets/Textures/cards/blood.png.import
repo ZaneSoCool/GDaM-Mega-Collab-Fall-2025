@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://i51mu8aibldp"
-path="res://.godot/imported/Lemon.jpg-5d1b17c328ab9098454b566bfb084498.ctex"
+uid="uid://c71w8reckx7sq"
+path="res://.godot/imported/blood.png-f5f645d019fa0ad9923db2e81b44c516.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Lemon.jpg"
-dest_files=["res://.godot/imported/Lemon.jpg-5d1b17c328ab9098454b566bfb084498.ctex"]
+source_file="res://Assets/Textures/cards/blood.png"
+dest_files=["res://.godot/imported/blood.png-f5f645d019fa0ad9923db2e81b44c516.ctex"]
 
 [params]
 

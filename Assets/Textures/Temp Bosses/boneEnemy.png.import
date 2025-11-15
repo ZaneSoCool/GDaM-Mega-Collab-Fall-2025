@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c71w8reckx7sq"
-path="res://.godot/imported/blood.png-792ce9f02b3bc32e43ec13a7c17a5eb3.ctex"
+uid="uid://pkocxwhupn1g"
+path="res://.godot/imported/boneEnemy.png-8a420a712bfeec95bb5f16228f09d06d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/blood.png"
-dest_files=["res://.godot/imported/blood.png-792ce9f02b3bc32e43ec13a7c17a5eb3.ctex"]
+source_file="res://Assets/Textures/Temp Bosses/boneEnemy.png"
+dest_files=["res://.godot/imported/boneEnemy.png-8a420a712bfeec95bb5f16228f09d06d.ctex"]
 
 [params]
 

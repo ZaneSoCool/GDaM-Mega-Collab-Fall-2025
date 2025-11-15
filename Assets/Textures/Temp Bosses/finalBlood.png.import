@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba4tstmqqm3qh"
-path="res://.godot/imported/Teeth&Blood.png-e516b40da8c4f850a0ea553024dfd649.ctex"
+uid="uid://dx4kudhw0ju67"
+path="res://.godot/imported/finalBlood.png-9713d78c376c2d32c7a3537aa7b659a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Teeth&Blood.png"
-dest_files=["res://.godot/imported/Teeth&Blood.png-e516b40da8c4f850a0ea553024dfd649.ctex"]
+source_file="res://Assets/Textures/Temp Bosses/finalBlood.png"
+dest_files=["res://.godot/imported/finalBlood.png-9713d78c376c2d32c7a3537aa7b659a0.ctex"]
 
 [params]
 

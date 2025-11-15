@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0jq2waufbeg7"
-path="res://.godot/imported/Cherry.jpg-e1491d424ea0d94d5bcfd64eab9f0659.ctex"
+uid="uid://ca5x5jduo5b28"
+path="res://.godot/imported/eye.png-4bf8c401f2e2abfbf1162a74aae27a7e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Cherry.jpg"
-dest_files=["res://.godot/imported/Cherry.jpg-e1491d424ea0d94d5bcfd64eab9f0659.ctex"]
+source_file="res://Assets/Textures/cards/eye.png"
+dest_files=["res://.godot/imported/eye.png-4bf8c401f2e2abfbf1162a74aae27a7e.ctex"]
 
 [params]
 

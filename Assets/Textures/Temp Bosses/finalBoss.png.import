@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3qytojgcq82v"
-path="res://.godot/imported/bone.png-61467afe46ab579498fa3841a4e8a2dc.ctex"
+uid="uid://divoknqdreiy"
+path="res://.godot/imported/finalBoss.png-c06ea3be9e8db9549a50df652c206b7a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/bone.png"
-dest_files=["res://.godot/imported/bone.png-61467afe46ab579498fa3841a4e8a2dc.ctex"]
+source_file="res://Assets/Textures/Temp Bosses/finalBoss.png"
+dest_files=["res://.godot/imported/finalBoss.png-c06ea3be9e8db9549a50df652c206b7a.ctex"]
 
 [params]
 
