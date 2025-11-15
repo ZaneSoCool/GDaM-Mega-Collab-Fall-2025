@@ -1,0 +1,128 @@
+[gd_scene load_steps=4 format=3 uid="uid://btoxoecravfo4"]
+
+[ext_resource type="Script" uid="uid://yd37x11r4wxj" path="res://Scripts/credits.gd" id="1_ccovl"]
+[ext_resource type="Texture2D" uid="uid://dsl0ajnhvrc1w" path="res://Assets/Textures/Solid Colour - Burgundy Red.jpg" id="2_uah1q"]
+[ext_resource type="Theme" uid="uid://2y7w663pawyl" path="res://menubuttontheme.tres" id="3_7emq5"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ccovl")
+
+[node name="BG" type="TextureRect" parent="."]
+z_index = -2
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 647.0
+mouse_filter = 2
+texture = ExtResource("2_uah1q")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 146.0
+grow_horizontal = 2
+theme_override_constants/separation = 17
+alignment = 1
+
+[node name="Director" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Director"
+horizontal_alignment = 1
+
+[node name="Zane" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/Zane"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Zane Pederson"
+
+[node name="Link" type="LinkButton" parent="VBoxContainer/Zane"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 20
+text = "Itch.io"
+underline = 1
+uri = "https://zane-make-game.itch.io/"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 113.0
+offset_right = 1152.0
+offset_bottom = 591.0
+theme_override_constants/separation = 150
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Art" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Art"
+horizontal_alignment = 1
+
+[node name="Music" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Music"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Programing" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Programming"
+horizontal_alignment = 1
+
+[node name="Writing" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Writing"
+horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Design" type="Label" parent="HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Design"
+horizontal_alignment = 1
+
+[node name="menu" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -57.0
+offset_right = 576.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_7emq5")
+text = "Menu"
+
+[connection signal="pressed" from="menu" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="menu" to="." method="_on_menu_pressed"]
