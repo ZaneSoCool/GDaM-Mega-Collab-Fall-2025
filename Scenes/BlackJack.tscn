@@ -65,6 +65,10 @@ text = "Current Bet: 00"
 layout_mode = 2
 text = "Vitality: 00"
 
+[node name="HandValue" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Hand Value : 0"
+
 [node name="playButtons" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 7

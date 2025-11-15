@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bm55cgruhhix1"]
+
+[ext_resource type="Script" uid="uid://dy3x1ujd4ltle" path="res://Scripts/powerUps/ace_in_the_hole.gd" id="1_kanmp"]
+
+[node name="aceInTheHole" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_kanmp")
+powerUpName = "AceInTheHole"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -7,8 +7,11 @@ class_name PowerUp
 @export var powerUpName : String
 @export var isPassive : bool
 
+var blackJackScene : Node
+
 func _ready() -> void:
 	self.text = powerUpName
+	blackJackScene = get_tree().current_scene
 
 func use():
 	if canUse() != null and !canUse(): return

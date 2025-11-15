@@ -3,9 +3,6 @@ extends PowerUp
 #discards the last drawn card and gets another
 
 func localUse():
-	#get variables
-	var blackJackScene = get_tree().current_scene
-
 	#remove last dealt card TODO: CHANGE for different logic l8r
 	blackJackScene.removeCard(true, -1)
 
@@ -13,9 +10,6 @@ func localUse():
 	blackJackScene.dealCard(true, true)
 
 func canUse():
-	#get variables
-	var blackJackScene = get_tree().current_scene
-
 	if !blackJackScene.playerCards.is_empty():
 		return true
 	else:
