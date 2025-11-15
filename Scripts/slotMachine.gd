@@ -5,6 +5,7 @@ extends Control
 
 @onready var top_not_purchased: TextureRect = $topNotPurchased
 @onready var bottom_not_purchased: TextureRect = $bottomNotPurchased
+@onready var vitality_label: Label = $Vitality
 
 @export var purchasedTop : bool = false
 @export var purchasedBottom : bool = false
@@ -20,6 +21,7 @@ var bottomPurchased = false
 
 func _ready() -> void:
 	getSlots()
+	vitality_label.text = "Vitality: " + str(Global.vitality)
 
 func _on_spin_button_pressed() -> void:
 	for row in slots:
@@ -27,6 +29,7 @@ func _on_spin_button_pressed() -> void:
 			slot.spin(symbols)
 		
 	readSlots()
+	vitality_label.text = "Vitality: " + str(Global.vitality)
 
 func getSlots():
 	for i in range(grid.get_child_count()):

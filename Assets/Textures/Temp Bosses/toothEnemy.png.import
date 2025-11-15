@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://l6vbpuvx4nkr"
-path="res://.godot/imported/teeth.png-37bf0d178944ac25755dd5c1385b7a93.ctex"
+uid="uid://65ysbplq6sl8"
+path="res://.godot/imported/toothEnemy.png-b8abed02ffdbb2c041242243b964c4e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/teeth.png"
-dest_files=["res://.godot/imported/teeth.png-37bf0d178944ac25755dd5c1385b7a93.ctex"]
+source_file="res://Assets/Textures/Temp Bosses/toothEnemy.png"
+dest_files=["res://.godot/imported/toothEnemy.png-b8abed02ffdbb2c041242243b964c4e3.ctex"]
 
 [params]
 

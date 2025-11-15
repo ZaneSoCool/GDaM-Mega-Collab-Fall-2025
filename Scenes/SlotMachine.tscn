@@ -103,6 +103,10 @@ offset_bottom = 277.0
 texture = ExtResource("7_dq6t6")
 expand_mode = 1
 
+[node name="Vitality" type="Label" parent="."]
+layout_mode = 0
+text = "Vitality: 00"
+
 [connection signal="pressed" from="SpinButton" to="." method="_on_spin_button_pressed"]
 [connection signal="pressed" from="PurchaseTopButton" to="." method="_on_purchase_top_button_pressed"]
 [connection signal="pressed" from="PurchaseBottomButton" to="." method="_on_purchase_bottom_button_pressed"]
