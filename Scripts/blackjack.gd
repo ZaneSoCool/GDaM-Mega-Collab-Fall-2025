@@ -82,13 +82,6 @@ func dealCards():
 	dealCard(true, true)
 	dealCard(false, true)
 	dealCard(false, false)
-	
-	for powerUp in passivePowerups:
-		powerUp.checkUse()
-				
-	#endgame check
-	if playerHand > 21 or dealerHand >= 21:
-		endGame()
 
 	play_buttons.visible = true
 	
@@ -149,6 +142,7 @@ func dealCard(forPlayer : bool, faceUp : bool):
 		totalHand(forPlayer, card_info)
 		dealer_cards_visualized.add_child(card)
 		
+	checkEndGame()
 		
 func dealSpecificCard(forPlayer : bool, faceUp : bool, card_id : int, card_suit : int): #if card id or suit is 0 it will be random
 	var card = cardScene.instantiate()
@@ -177,6 +171,8 @@ func dealSpecificCard(forPlayer : bool, faceUp : bool, card_id : int, card_suit 
 		dealerCards.append(card)
 		totalHand(forPlayer, card_info)
 		dealer_cards_visualized.add_child(card)
+		
+	checkEndGame()
 
 #sums up hand for stuff
 func totalHand(forPlayer : bool, card_info : Array):
@@ -278,3 +274,11 @@ func removeCard(forPlayer : bool, cardIndex : int):
 	
 func updateHandValue():
 	hand_value.text = "Hand Value : " + str(playerHand)
+
+func checkEndGame():
+	for powerUp in passivePowerups:
+		powerUp.checkUse()
+				
+	#endgame check
+	if playerHand > 21 or dealerHand >= 21:
+		endGame()
