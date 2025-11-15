@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://0to4ij4pfo7v"]
 
 [ext_resource type="Script" uid="uid://2n0xkgllsjv0" path="res://Scripts/card.gd" id="1_pnb5n"]
-[ext_resource type="Texture2D" uid="uid://b87v47p4kmm67" path="res://icon.svg" id="2_3p273"]
+[ext_resource type="Texture2D" uid="uid://b3qytojgcq82v" path="res://Assets/bone.png" id="3_h8wm0"]
 
 [node name="Card" type="Control"]
 layout_mode = 3
@@ -10,14 +10,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_pnb5n")
 
-[node name="Label" type="Label" parent="."]
-z_index = 1
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="Card_Texture" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("2_3p273")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("3_h8wm0")
+hframes = 13

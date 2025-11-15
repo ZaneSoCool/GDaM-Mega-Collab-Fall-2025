@@ -11,11 +11,17 @@ config_version=5
 [application]
 
 config/name="GDaM Mega-Collab 10/04/25"
-run/main_scene="uid://jt6rn6cxyc2n"
+run/main_scene="uid://bgk3n3w28bp4d"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Global="*res://Scripts/Global.gd"
-SceneTransition="*res://Scenes/scene_transition.tscn"
+SceneTransition="*res://Scenes/Global/scene_transition.tscn"
+SoundController="*res://Scenes/Global/SoundController.tscn"
+Settings="*res://Scenes/Global/settings.tscn"
+
+[display]
+
+window/stretch/mode="viewport"

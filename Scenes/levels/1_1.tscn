@@ -1,16 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwgr8p71ecut2"]
+[gd_scene load_steps=3 format=3 uid="uid://5l8ea5ufrge5"]
 
-[ext_resource type="Script" uid="uid://cy2kydfbv7f33" path="res://Scripts/blackjack.gd" id="1_15ju2"]
-[ext_resource type="Texture2D" uid="uid://b87v47p4kmm67" path="res://icon.svg" id="1_mrrmw"]
+[ext_resource type="Script" uid="uid://cy2kydfbv7f33" path="res://Scripts/blackjack.gd" id="1_ctnfv"]
+[ext_resource type="Texture2D" uid="uid://b87v47p4kmm67" path="res://icon.svg" id="2_y3ccu"]
 
-[node name="Blackjack" type="Control"]
+[node name="1_1" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_15ju2")
+script = ExtResource("1_ctnfv")
+dealer_max_vitality = 30
+minimumBet = 1
+AI_hit_stop = 20
+AI_randomness = 0
 
 [node name="BG" type="TextureRect" parent="."]
 layout_mode = 1
@@ -33,7 +37,7 @@ offset_right = 64.0
 offset_bottom = -145.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_mrrmw")
+texture = ExtResource("2_y3ccu")
 
 [node name="Dealer_Vitality" type="Label" parent="."]
 layout_mode = 0

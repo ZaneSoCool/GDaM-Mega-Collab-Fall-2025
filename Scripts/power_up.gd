@@ -7,10 +7,15 @@ class_name PowerUp
 @export var powerUpName : String
 @export var isPassive : bool
 
+var blackJackScene : Node
+
 func _ready() -> void:
 	self.text = powerUpName
+	blackJackScene = get_tree().current_scene
 
-func use():	
+func use():
+	if canUse() != null and !canUse(): return
+	
 	#updates quantity of this powerUp left
 	Global.powerUpQuantityDictionary[powerUpName] -= 1
 	
@@ -27,5 +32,8 @@ func _on_pressed() -> void:
 	if isPassive: return
 	use()
 
-func checkUse():
+func checkUse(): #checks if card should be used automatically
+	pass
+
+func canUse(): #returns true or false based on if powerup is allowed to be used
 	pass

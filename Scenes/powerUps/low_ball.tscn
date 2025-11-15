@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsvb0lh0coqig"]
+
+[ext_resource type="Script" uid="uid://b16wu2c2i6ebc" path="res://Scripts/powerUps/low_ball.gd" id="1_ido78"]
+
+[node name="lowBall" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_ido78")
+powerUpName = "LowBall"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

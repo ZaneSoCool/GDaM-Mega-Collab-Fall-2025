@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq3vfjaheg03h"]
+
+[ext_resource type="Script" uid="uid://cp420tq7188br" path="res://Scenes/Global/sound_controller.gd" id="1_hgsgb"]
+[ext_resource type="AudioStream" uid="uid://b7pavjvrcpquc" path="res://Assets/Sound/SFX/click.wav" id="2_sxi7c"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sxi7c"]
+random_pitch = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("2_sxi7c")
+
+[node name="SoundController" type="Node"]
+script = ExtResource("1_hgsgb")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_sxi7c")
+bus = &"SFX"
