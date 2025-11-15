@@ -15,6 +15,7 @@ dealer_max_vitality = 30
 minimumBet = 1
 AI_hit_stop = 20
 AI_randomness = 0
+next_scene = "res://Scenes/SlotMachine.tscn"
 
 [node name="BG" type="TextureRect" parent="."]
 layout_mode = 1

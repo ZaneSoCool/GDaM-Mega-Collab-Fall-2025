@@ -221,7 +221,7 @@ func _on_double_down_pressed() -> void:
 
 func _on_submit_pressed() -> void:
 	var bet = int(line_edit.text)
-	if bet < minimumBet or bet > Global.vitality:
+	if bet < minimumBet or bet > Global.vitality or bet > Global.current_dealer_vitality:
 		return
 		
 	currentBet = bet
