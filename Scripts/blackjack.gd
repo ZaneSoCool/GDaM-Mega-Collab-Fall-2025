@@ -21,18 +21,23 @@ var playing : bool = true
 var currentBet : int
 
 #references
-@onready var player_cards_visualized: HBoxContainer = $PlayerCardsVisualized
-@onready var dealer_cards_visualized: HBoxContainer = $DealersCardsVisualized
+	#cards
+@onready var player_cards_visualized: HBoxContainer = $PlayerHand/PlayerCardsVisualized
+@onready var dealer_cards_visualized: HBoxContainer = $DealerHand/DealersCardsVisualized
+@onready var player_hand_value: Label = $PlayerHand/PlayerHandValue
+	#interface
 @onready var play_buttons: HBoxContainer = $playButtons
 @onready var bet_buttons: HBoxContainer = $betButtons
 @onready var line_edit: LineEdit = $betButtons/LineEdit
-@onready var current_bet_label: Label = $VBoxContainer/CurrentBet
-@onready var minimum_bet_label: Label = $VBoxContainer/MinimumBet
-@onready var vitality_label: Label = $VBoxContainer/Vitality
-@onready var dealer_vitality_label: Label = $Dealer_Vitality
+	#data
+@onready var current_bet_label: Label = $Data/CurrentBet
+@onready var minimum_bet_label: Label = $Data/MinimumBet
+	#vitality
+@onready var player_vitality_bar: ProgressBar = $playerVitalityBar
+@onready var dealer_vitality_bar: ProgressBar = $dealerVitalityBar
+	#powerups
 @onready var power_ups: HBoxContainer = $PowerUps
 @onready var power_ups_passive: HBoxContainer = $PowerUpsPassive
-@onready var hand_value: Label = $VBoxContainer/HandValue
 
 var cardScene = preload("res://Scenes/Card.tscn")
 
@@ -45,16 +50,23 @@ func _ready() -> void:
 		Global.current_dealer_vitality = dealer_max_vitality
 	
 	#setup bet and bet text stuff
+	minimum_bet_label.text = "Minimum Bet: " + str(minimumBet)
 	currentBet = minimumBet
 	current_bet_label.text = "Current Bet: " + str(currentBet)
 	line_edit.text = str(currentBet)
-	minimum_bet_label.text = "Minimum Bet: " + str(minimumBet)
+
 	
-	#setup correct health
-	vitality_label.text = "Vitality: " + str(Global.vitality)
+	#setup player health bar
+	player_vitality_bar.value = Global.vitality
+	player_vitality_bar.max_value = Global.max_vitality
+	
+	#sets up the dealers max vitality if this is the first match against this dealer (this is the case if dealer vitality is <=0)
 	if Global.current_dealer_vitality <= 0:
 		Global.current_dealer_vitality = dealer_max_vitality
-	dealer_vitality_label.text = "Dealer Vitality: " + str(Global.current_dealer_vitality)
+		
+	#setup dealer health bar
+	dealer_vitality_bar.max_value = dealer_max_vitality
+	dealer_vitality_bar.value = Global.current_dealer_vitality
 	
 	#setup powerUps
 	for powerUpKey in Global.powerUpQuantityDictionary:
@@ -66,7 +78,6 @@ func _ready() -> void:
 				power_ups_passive.add_child(powerUp)
 				passivePowerups.append(powerUp)
 				
-	
 	#make correct buttons visible
 	play_buttons.visible = false
 	
@@ -90,9 +101,12 @@ func endGame():
 	play_buttons.visible = false
 	
 	if dealerHand > 21 or (playerHand > dealerHand and playerHand <= 21):
-		Global.vitality += currentBet
 		Global.current_dealer_vitality -= currentBet
+		Global.vitality += currentBet
 		
+		if Global.vitality > Global.max_vitality: #update max vitality if vitality surpasses it
+			Global.max_vitality = Global.vitality
+	
 		if Global.current_dealer_vitality <= 0:
 			Global.current_dealer_vitality = 0
 			print("next level")
@@ -273,7 +287,7 @@ func removeCard(forPlayer : bool, cardIndex : int):
 		cardToRemove.queue_free()
 	
 func updateHandValue():
-	hand_value.text = "Hand Value : " + str(playerHand)
+	player_hand_value.text = "Hand Value : " + str(playerHand)
 
 func checkEndGame():
 	for powerUp in passivePowerups:

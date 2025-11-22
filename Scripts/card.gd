@@ -9,15 +9,15 @@ var card_id : int = 1 #1,2.. 11 (Jack), 12 (Queen), 13 (King)
 var card_suite : int = 1 #1, 2, 3, 4
 var faceUp : bool = true
 
-const back_texture = preload("res://Assets/Textures/backOfCard.png")
+const back_texture = preload("res://Assets/Textures/cards/backOfCard.png")
 
-const bone_text = preload("res://Assets/bone.png")
+const bone_text = preload("res://Assets/Textures/cards/bone.png")
 
-const teeth_text = preload("res://Assets/teeth.png")
+const teeth_text = preload("res://Assets/Textures/cards/teeth.png")
 
-const eye_text = preload("res://Assets/eye.png")
+const eye_text = preload("res://Assets/Textures/cards/eye.png")
 
-const blood_text = preload("res://Assets/blood.png")
+const blood_text = preload("res://Assets/Textures/cards/blood.png")
 
 func _ready() -> void:
 	if faceUp:

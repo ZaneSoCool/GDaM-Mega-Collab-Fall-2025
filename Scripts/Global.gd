@@ -2,6 +2,7 @@ extends Node
 
 var current_dealer_vitality : int = 0
 var vitality : int = 100
+var max_vitality : int = 100 #not a cap but a tracker of the highest the player's vitality has reached
 
 #stores quantity of power ups player has
 var powerUpQuantityDictionary : Dictionary[String, int] = {

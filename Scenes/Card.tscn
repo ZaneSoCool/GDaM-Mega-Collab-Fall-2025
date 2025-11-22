@@ -1,16 +1,22 @@
 [gd_scene load_steps=3 format=3 uid="uid://0to4ij4pfo7v"]
 
 [ext_resource type="Script" uid="uid://2n0xkgllsjv0" path="res://Scripts/card.gd" id="1_pnb5n"]
-[ext_resource type="Texture2D" uid="uid://b3qytojgcq82v" path="res://Assets/bone.png" id="3_h8wm0"]
+[ext_resource type="Texture2D" uid="uid://b3qytojgcq82v" path="res://Assets/Textures/cards/bone.png" id="3_h8wm0"]
 
 [node name="Card" type="Control"]
+custom_minimum_size = Vector2(80, 102)
 layout_mode = 3
 anchors_preset = 0
+offset_left = -40.0
+offset_top = -56.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 46.0
+pivot_offset = Vector2(20, 28)
 script = ExtResource("1_pnb5n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+position = Vector2(40, 56)
+scale = Vector2(2, 2)
 texture = ExtResource("3_h8wm0")
 hframes = 13

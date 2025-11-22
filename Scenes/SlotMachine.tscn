@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c24x8jh8hukjj" path="res://Assets/Textures/slotMachine/bloodSlot.png" id="4_glh05"]
 [ext_resource type="Texture2D" uid="uid://ctwj4juat6dvt" path="res://Assets/Textures/slotMachine/toothSlot.png" id="5_7juld"]
 [ext_resource type="Texture2D" uid="uid://dy3ajjkoi4274" path="res://Assets/Textures/slotMachine/jokerSlot.png" id="6_dq6t6"]
-[ext_resource type="Texture2D" uid="uid://dsl0ajnhvrc1w" path="res://Assets/Textures/Solid Colour - Burgundy Red.jpg" id="7_dq6t6"]
+[ext_resource type="Texture2D" uid="uid://dsl0ajnhvrc1w" path="res://Assets/Textures/menus/Solid Colour - Burgundy Red.jpg" id="7_dq6t6"]
 
 [node name="SlotMachine" type="Control"]
 layout_mode = 3
