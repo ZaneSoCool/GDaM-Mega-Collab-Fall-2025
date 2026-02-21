@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwgr8p71ecut2"]
+[gd_scene format=3 uid="uid://bwgr8p71ecut2"]
 
 [ext_resource type="Script" uid="uid://cy2kydfbv7f33" path="res://Scripts/blackjack.gd" id="1_15ju2"]
 [ext_resource type="Texture2D" uid="uid://bkmw2hffqlh67" path="res://Assets/Textures/arenaEdited.png" id="2_4fb4x"]
 [ext_resource type="Texture2D" uid="uid://divoknqdreiy" path="res://Assets/Textures/Temp Bosses/finalBoss.png" id="2_15ju2"]
 
-[node name="Blackjack" type="Control"]
+[node name="Blackjack" type="Control" unique_id=113715784]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +14,7 @@ grow_vertical = 2
 script = ExtResource("1_15ju2")
 dealer_max_vitality = 20
 
-[node name="BG" type="TextureRect" parent="."]
+[node name="BG" type="TextureRect" parent="." unique_id=1327504477]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,7 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_4fb4x")
 
-[node name="Enemy" type="TextureRect" parent="."]
+[node name="Enemy" type="TextureRect" parent="." unique_id=854658407]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -39,7 +39,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_15ju2")
 
-[node name="playerVitalityBar" type="ProgressBar" parent="."]
+[node name="playerVitalityBar" type="ProgressBar" parent="." unique_id=1888918235]
 z_index = 1
 layout_mode = 0
 offset_left = 100.0
@@ -47,7 +47,7 @@ offset_top = 570.0
 offset_right = 452.0
 offset_bottom = 620.0
 
-[node name="dealerVitalityBar" type="ProgressBar" parent="."]
+[node name="dealerVitalityBar" type="ProgressBar" parent="." unique_id=305924523]
 z_index = 1
 layout_mode = 0
 offset_left = 176.0
@@ -55,7 +55,7 @@ offset_top = 32.0
 offset_right = 528.0
 offset_bottom = 82.0
 
-[node name="Data" type="VBoxContainer" parent="."]
+[node name="Data" type="VBoxContainer" parent="." unique_id=1930163351]
 layout_mode = 0
 offset_left = 516.0
 offset_top = 531.0
@@ -64,15 +64,19 @@ offset_bottom = 648.0
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="MinimumBet" type="Label" parent="Data"]
+[node name="MinimumBet" type="Label" parent="Data" unique_id=835444933]
 layout_mode = 2
 text = "Minimum Bet: 00"
 
-[node name="CurrentBet" type="Label" parent="Data"]
+[node name="CurrentBet" type="Label" parent="Data" unique_id=1484168786]
 layout_mode = 2
 text = "Current Bet: 00"
 
-[node name="playButtons" type="HBoxContainer" parent="."]
+[node name="TwentyOne" type="Label" parent="Data" unique_id=635606009]
+layout_mode = 2
+text = "Goal : 21"
+
+[node name="playButtons" type="HBoxContainer" parent="." unique_id=1832595630]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -88,19 +92,19 @@ grow_vertical = 0
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="Hit" type="Button" parent="playButtons"]
+[node name="Hit" type="Button" parent="playButtons" unique_id=397636801]
 layout_mode = 2
 text = "Hit"
 
-[node name="Stand" type="Button" parent="playButtons"]
+[node name="Stand" type="Button" parent="playButtons" unique_id=1220319460]
 layout_mode = 2
 text = "Stand"
 
-[node name="Double Down" type="Button" parent="playButtons"]
+[node name="Double Down" type="Button" parent="playButtons" unique_id=1927427849]
 layout_mode = 2
 text = "Double Down"
 
-[node name="betButtons" type="HBoxContainer" parent="."]
+[node name="betButtons" type="HBoxContainer" parent="." unique_id=2043701205]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -116,14 +120,14 @@ grow_vertical = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="LineEdit" type="LineEdit" parent="betButtons"]
+[node name="LineEdit" type="LineEdit" parent="betButtons" unique_id=1342025985]
 layout_mode = 2
 
-[node name="Submit" type="Button" parent="betButtons"]
+[node name="Submit" type="Button" parent="betButtons" unique_id=1789138831]
 layout_mode = 2
 text = "Submit"
 
-[node name="DealerHand" type="VBoxContainer" parent="."]
+[node name="DealerHand" type="VBoxContainer" parent="." unique_id=1370653768]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -139,13 +143,13 @@ grow_vertical = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="DealersCardsVisualized" type="HBoxContainer" parent="DealerHand"]
+[node name="DealersCardsVisualized" type="HBoxContainer" parent="DealerHand" unique_id=850408073]
 custom_minimum_size = Vector2(0, 102)
 layout_mode = 2
 theme_override_constants/separation = 15
 alignment = 1
 
-[node name="PlayerHand" type="VBoxContainer" parent="."]
+[node name="PlayerHand" type="VBoxContainer" parent="." unique_id=930128176]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -161,24 +165,24 @@ grow_vertical = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="PlayerCardsVisualized" type="HBoxContainer" parent="PlayerHand"]
+[node name="PlayerCardsVisualized" type="HBoxContainer" parent="PlayerHand" unique_id=938379931]
 custom_minimum_size = Vector2(0, 102)
 layout_mode = 2
 theme_override_constants/separation = 15
 alignment = 1
 
-[node name="PlayerHandValue" type="Label" parent="PlayerHand"]
+[node name="PlayerHandValue" type="Label" parent="PlayerHand" unique_id=1568169782]
 layout_mode = 2
 text = "Hand Value : 0"
 horizontal_alignment = 1
 
-[node name="PowerUps" type="HBoxContainer" parent="."]
+[node name="PowerUps" type="HBoxContainer" parent="." unique_id=350120906]
 layout_mode = 0
 offset_top = 114.0
 offset_right = 300.99982
 offset_bottom = 529.0
 
-[node name="PowerUpsPassive" type="HBoxContainer" parent="."]
+[node name="PowerUpsPassive" type="HBoxContainer" parent="." unique_id=1760083254]
 layout_mode = 0
 offset_left = 851.0
 offset_top = 106.0

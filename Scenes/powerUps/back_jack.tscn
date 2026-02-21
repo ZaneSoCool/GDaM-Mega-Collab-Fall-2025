@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dks82e576w02s"]
+[gd_scene format=3 uid="uid://dks82e576w02s"]
 
 [ext_resource type="Script" uid="uid://dk67i3yoth61" path="res://Scripts/powerUps/back_jack.gd" id="1_0b1aa"]
 
-[node name="backJack" type="Button"]
+[node name="backJack" type="Button" unique_id=1938957383]
 offset_right = 8.0
 offset_bottom = 8.0
 script = ExtResource("1_0b1aa")

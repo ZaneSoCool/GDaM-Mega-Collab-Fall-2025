@@ -27,6 +27,10 @@ func _ready() -> void:
 		sprite.hframes = 1
 		sprite.texture = back_texture
 		
+	sprite.rotation_degrees = randf_range(-7,7)
+	sprite.position.x += randf_range(-2,2)
+	sprite.position.y += randf_range(-8, 8)
+		
 func setup_card_texture(value : int, suit : int):
 	if suit == 1:
 		sprite.texture = bone_text

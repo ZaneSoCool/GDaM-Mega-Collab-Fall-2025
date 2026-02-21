@@ -1,15 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgk3n3w28bp4d"]
+[gd_scene format=3 uid="uid://bgk3n3w28bp4d"]
 
 [ext_resource type="Script" uid="uid://blptlwe5pceu2" path="res://Scripts/menuscript.gd" id="1_uubjt"]
 [ext_resource type="Theme" uid="uid://2y7w663pawyl" path="res://menubuttontheme.tres" id="2_5yleq"]
-[ext_resource type="Texture2D" uid="uid://dsl0ajnhvrc1w" path="res://Assets/Textures/Solid Colour - Burgundy Red.jpg" id="3_ylpcl"]
-[ext_resource type="Texture2D" uid="uid://b6d8uujfjlhgt" path="res://Assets/Textures/menus/STARTbutton.png" id="4_ma218"]
-[ext_resource type="Texture2D" uid="uid://d13e4wkr0wyc6" path="res://Assets/Textures/menus/QuitButtonFinal.png" id="5_idohh"]
+[ext_resource type="Texture2D" uid="uid://dsl0ajnhvrc1w" path="res://Assets/Textures/menus/Solid Colour - Burgundy Red.jpg" id="3_ylpcl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uubjt"]
 font_size = 65
 
-[node name="Menu" type="Control"]
+[node name="Menu" type="Control" unique_id=1426225883]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,7 +17,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_uubjt")
 
-[node name="BG" type="TextureRect" parent="."]
+[node name="BG" type="TextureRect" parent="." unique_id=1719584206]
 z_index = -2
 layout_mode = 0
 offset_right = 1153.0
@@ -27,7 +25,7 @@ offset_bottom = 647.0
 mouse_filter = 2
 texture = ExtResource("3_ylpcl")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=644225217]
 layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
@@ -40,26 +38,26 @@ grow_vertical = 2
 theme_override_constants/separation = 15
 alignment = 1
 
-[node name="Title" type="Label" parent="VBoxContainer"]
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=1923076440]
 layout_mode = 2
-text = "COOL TITLE"
+text = "cool title"
 label_settings = SubResource("LabelSettings_uubjt")
 horizontal_alignment = 1
 
-[node name="StartButton" type="Button" parent="VBoxContainer"]
+[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=982384742]
 layout_mode = 2
 theme = ExtResource("2_5yleq")
-icon = ExtResource("4_ma218")
+text = "start"
 
-[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+[node name="CreditsButton" type="Button" parent="VBoxContainer" unique_id=1119488277]
 layout_mode = 2
 theme = ExtResource("2_5yleq")
-text = "Credits"
+text = "credits"
 
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
+[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=712613116]
 layout_mode = 2
 theme = ExtResource("2_5yleq")
-icon = ExtResource("5_idohh")
+text = "quit"
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]

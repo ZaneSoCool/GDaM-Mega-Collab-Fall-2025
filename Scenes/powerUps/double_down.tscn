@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://rm0mj31vhu0o"]
+
+[ext_resource type="Script" uid="uid://ch6i83y0q3pqs" path="res://Scripts/powerUps/double_down.gd" id="1_26hs1"]
+
+[node name="DoubleDown" type="Button" unique_id=1985415700]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "DoubleDown"
+script = ExtResource("1_26hs1")
+powerUpName = "DoubleDown"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -20,6 +20,8 @@ var deck : Array[Array] = []
 var playing : bool = true
 var currentBet : int
 
+var twentyOne := 21
+
 #references
 	#cards
 @onready var player_cards_visualized: HBoxContainer = $PlayerHand/PlayerCardsVisualized
@@ -32,6 +34,7 @@ var currentBet : int
 	#data
 @onready var current_bet_label: Label = $Data/CurrentBet
 @onready var minimum_bet_label: Label = $Data/MinimumBet
+@onready var twenty_one_label: Label = $Data/TwentyOne
 	#vitality
 @onready var player_vitality_bar: ProgressBar = $playerVitalityBar
 @onready var dealer_vitality_bar: ProgressBar = $dealerVitalityBar
@@ -55,7 +58,6 @@ func _ready() -> void:
 	current_bet_label.text = "Current Bet: " + str(currentBet)
 	line_edit.text = str(currentBet)
 
-	
 	#setup player health bar
 	player_vitality_bar.value = Global.vitality
 	player_vitality_bar.max_value = Global.max_vitality
@@ -100,7 +102,7 @@ func endGame():
 	playing = false
 	play_buttons.visible = false
 	
-	if dealerHand > 21 or (playerHand > dealerHand and playerHand <= 21):
+	if dealerHand > twentyOne or (playerHand > dealerHand and playerHand <= twentyOne):
 		Global.current_dealer_vitality -= currentBet
 		Global.vitality += currentBet
 		
@@ -110,9 +112,11 @@ func endGame():
 		if Global.current_dealer_vitality <= 0:
 			Global.current_dealer_vitality = 0
 			print("next level")
+			await(get_tree().create_timer(3.0).timeout)
 			SceneTransition.change_scene_to(next_scene)
 		else:
 			print("player won : new round")
+			await(get_tree().create_timer(3.0).timeout)
 			SceneTransition.reload_current_scene()
 		
 	else:
@@ -120,9 +124,11 @@ func endGame():
 		
 		if Global.vitality <= 0:
 			print("game over")
+			await(get_tree().create_timer(3.0).timeout)
 			SceneTransition.change_scene_to("res://Scenes/Menu.tscn")
 		else:
 			print("player lost : new round")
+			await(get_tree().create_timer(3.0).timeout)
 			SceneTransition.reload_current_scene()
 	
 #------------Game/Round Logic------------#
@@ -195,7 +201,7 @@ func totalHand(forPlayer : bool, card_info : Array):
 		if card_info[0] > 10:
 			playerHand += 10
 		elif card_info[0] == 1:
-			if playerHand + 11 > 21:
+			if playerHand + 11 > twentyOne:
 				playerHand += 1
 			else:
 				playerHand += 11
@@ -205,7 +211,7 @@ func totalHand(forPlayer : bool, card_info : Array):
 		if card_info[0] > 10:
 			dealerHand += 10
 		elif card_info[0] == 1:
-			if dealerHand + 11 > 21:
+			if dealerHand + 11 > twentyOne:
 				dealerHand += 1
 			else:
 				dealerHand += 11
@@ -224,7 +230,7 @@ func _on_hit_pressed() -> void:
 func _on_stand_pressed() -> void:
 	dealerTurn()
 
-#Double Down
+#Double Down (NOT POWERUP)
 func _on_double_down_pressed() -> void:
 	if currentBet * 2 > Global.vitality:
 		return
@@ -294,5 +300,5 @@ func checkEndGame():
 		powerUp.checkUse()
 				
 	#endgame check
-	if playerHand > 21 or dealerHand >= 21:
+	if playerHand > twentyOne or dealerHand >= twentyOne:
 		endGame()
