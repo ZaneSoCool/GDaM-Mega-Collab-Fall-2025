@@ -6,12 +6,18 @@
 [node name="Card" type="Control" unique_id=1120516349]
 custom_minimum_size = Vector2(80, 102)
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -40.0
-offset_top = -56.0
+offset_top = -51.0
 offset_right = 40.0
-offset_bottom = 46.0
-pivot_offset = Vector2(20, 28)
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(40, 55)
 script = ExtResource("1_pnb5n")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1681302013]
@@ -20,3 +26,6 @@ position = Vector2(40, 56)
 scale = Vector2(2, 2)
 texture = ExtResource("3_h8wm0")
 hframes = 13
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
