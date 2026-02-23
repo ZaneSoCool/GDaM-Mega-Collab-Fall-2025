@@ -181,6 +181,7 @@ func dealSpecificCard(forPlayer : bool, faceUp : bool, card_id : int, card_suit 
 	card.card_id = card_info[0]
 	card.card_suite = card_info[1]
 	card.faceUp = faceUp
+	card.forPlayer = forPlayer
 	
 	if forPlayer:
 		playerCards.append(card)

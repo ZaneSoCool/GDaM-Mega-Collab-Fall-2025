@@ -79,7 +79,14 @@ func _input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	if isHeld:
 		global_position += (get_global_mouse_position() - prevMousePos) #Vector2(40, 51)
+		
+		#clamps card position so it can't leave play area
+		global_position.x = clamp(global_position.x, 180, 972)
+		global_position.y = clamp(global_position.y, 110, 410)
+		
 		prevMousePos = get_global_mouse_position()
+		
+		
 
 func randomizePlacement(randomizePosition : bool):
 	sprite.rotation_degrees = randf_range(-7,7)
