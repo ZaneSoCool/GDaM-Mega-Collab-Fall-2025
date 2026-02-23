@@ -19,6 +19,8 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(40, 55)
 script = ExtResource("1_pnb5n")
+dealer_color = Color(1, 0.77200705, 0.7358782, 1)
+hover_color = Color(0.68539757, 0.7808411, 0.91210455, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1681302013]
 texture_filter = 1

@@ -11,7 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+mouse_filter = 2
 script = ExtResource("1_15ju2")
 dealer_max_vitality = 20
 
@@ -22,6 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_4fb4x")
 
 [node name="Enemy" type="TextureRect" parent="." unique_id=854658407]
@@ -38,6 +39,7 @@ offset_right = -470.0
 offset_bottom = -218.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_15ju2")
 
 [node name="playerVitalityBar" type="ProgressBar" parent="." unique_id=1888918235]
@@ -47,6 +49,7 @@ offset_left = 100.0
 offset_top = 570.0
 offset_right = 452.0
 offset_bottom = 620.0
+mouse_filter = 2
 
 [node name="dealerVitalityBar" type="ProgressBar" parent="." unique_id=305924523]
 z_index = 1
@@ -55,6 +58,7 @@ offset_left = 176.0
 offset_top = 32.0
 offset_right = 528.0
 offset_bottom = 82.0
+mouse_filter = 2
 
 [node name="Data" type="VBoxContainer" parent="." unique_id=1930163351]
 layout_mode = 0
@@ -62,6 +66,7 @@ offset_left = 516.0
 offset_top = 531.0
 offset_right = 679.0
 offset_bottom = 648.0
+mouse_filter = 2
 theme_override_constants/separation = 10
 alignment = 1
 
@@ -141,6 +146,7 @@ offset_right = 100.0
 offset_bottom = -59.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/separation = 20
 alignment = 1
 
@@ -163,6 +169,7 @@ offset_right = 100.0
 offset_bottom = 201.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/separation = 20
 alignment = 1
 
@@ -182,6 +189,7 @@ layout_mode = 0
 offset_top = 114.0
 offset_right = 300.99982
 offset_bottom = 529.0
+mouse_filter = 2
 
 [node name="PowerUpsPassive" type="HBoxContainer" parent="." unique_id=1760083254]
 layout_mode = 0
@@ -189,6 +197,7 @@ offset_left = 851.0
 offset_top = 106.0
 offset_right = 1147.0
 offset_bottom = 531.0
+mouse_filter = 2
 
 [connection signal="pressed" from="playButtons/Hit" to="." method="_on_hit_pressed"]
 [connection signal="pressed" from="playButtons/Stand" to="." method="_on_stand_pressed"]
