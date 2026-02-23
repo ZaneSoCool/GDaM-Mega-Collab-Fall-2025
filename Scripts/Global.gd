@@ -6,12 +6,12 @@ var max_vitality : int = 100 #not a cap but a tracker of the highest the player'
 
 #stores quantity of power ups player has
 var powerUpQuantityDictionary : Dictionary[String, int] = {
-	"Equivalent Exchange" : 0,
-	"Backjack" : 0,
-	"LowBall" : 0,
-	"SickleCell" : 0,
-	"AceInTheHole" : 0,
-	"DoubleDown" : 3
+	"Equivalent Exchange" : 5,
+	"Backjack" : 5,
+	"LowBall" : 5,
+	"SickleCell" : 5,
+	"AceInTheHole" : 5,
+	"DoubleDown" : 5
 }
 
 #stores references to the scene of a powerUp

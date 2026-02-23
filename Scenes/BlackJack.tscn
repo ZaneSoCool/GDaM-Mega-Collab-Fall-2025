@@ -4,6 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://bkmw2hffqlh67" path="res://Assets/Textures/arenaEdited.png" id="2_4fb4x"]
 [ext_resource type="Texture2D" uid="uid://divoknqdreiy" path="res://Assets/Textures/Temp Bosses/finalBoss.png" id="2_15ju2"]
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_4fb4x"]
+color = Color(1, 1, 1, 1)
+thickness = 2
+
 [node name="Blackjack" type="Control" unique_id=113715784]
 layout_mode = 3
 anchors_preset = 15
@@ -14,8 +18,10 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_15ju2")
 dealer_max_vitality = 20
+metadata/_edit_vertical_guides_ = [-202.0]
 
 [node name="BG" type="TextureRect" parent="." unique_id=1327504477]
+z_index = -1000
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -184,20 +190,48 @@ layout_mode = 2
 text = "Hand Value : 0"
 horizontal_alignment = 1
 
-[node name="PowerUps" type="HBoxContainer" parent="." unique_id=350120906]
-layout_mode = 0
+[node name="LeftBar" type="Control" parent="." unique_id=1500190085]
+anchors_preset = 0
 offset_top = 114.0
-offset_right = 300.99982
-offset_bottom = 529.0
-mouse_filter = 2
+offset_right = 176.0
+offset_bottom = 534.0
+size_flags_vertical = 3
 
-[node name="PowerUpsPassive" type="HBoxContainer" parent="." unique_id=1760083254]
+[node name="ColorRect" type="ColorRect" parent="LeftBar" unique_id=2057679357]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 0.31764707)
+
+[node name="PowerUps" type="GridContainer" parent="LeftBar" unique_id=2145680514]
 layout_mode = 0
-offset_left = 851.0
-offset_top = 106.0
-offset_right = 1147.0
-offset_bottom = 531.0
-mouse_filter = 2
+offset_right = 176.0
+offset_bottom = 318.0
+
+[node name="HSeparator" type="HSeparator" parent="LeftBar" unique_id=1417846415]
+layout_mode = 0
+offset_top = 318.0
+offset_right = 176.0
+offset_bottom = 334.0
+theme_override_styles/separator = SubResource("StyleBoxLine_4fb4x")
+
+[node name="PowerUpDescription" type="Label" parent="LeftBar" unique_id=93275060]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 334.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+text = "description here hello"
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [connection signal="pressed" from="playButtons/Hit" to="." method="_on_hit_pressed"]
 [connection signal="pressed" from="playButtons/Stand" to="." method="_on_stand_pressed"]

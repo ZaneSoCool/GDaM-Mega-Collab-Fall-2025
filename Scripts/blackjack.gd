@@ -39,8 +39,7 @@ var twentyOne := 21
 @onready var player_vitality_bar: ProgressBar = $playerVitalityBar
 @onready var dealer_vitality_bar: ProgressBar = $dealerVitalityBar
 	#powerups
-@onready var power_ups: HBoxContainer = $PowerUps
-@onready var power_ups_passive: HBoxContainer = $PowerUpsPassive
+@onready var power_ups: GridContainer = $LeftBar/PowerUps
 
 var cardScene = preload("res://Scenes/Card.tscn")
 
@@ -74,10 +73,9 @@ func _ready() -> void:
 	for powerUpKey in Global.powerUpQuantityDictionary:
 		if Global.powerUpQuantityDictionary[powerUpKey] > 0:
 			var powerUp = load(Global.powerUpRefDictionary[powerUpKey]).instantiate()
-			if powerUp.isPassive == false:
-				power_ups.add_child(powerUp)
-			else:
-				power_ups_passive.add_child(powerUp)
+			power_ups.add_child(powerUp)
+			
+			if powerUp.isPassive == true:
 				passivePowerups.append(powerUp)
 				
 	#make correct buttons visible

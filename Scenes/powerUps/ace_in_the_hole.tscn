@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bm55cgruhhix1"]
+[gd_scene format=3 uid="uid://bm55cgruhhix1"]
 
 [ext_resource type="Script" uid="uid://dy3x1ujd4ltle" path="res://Scripts/powerUps/ace_in_the_hole.gd" id="1_kanmp"]
 
-[node name="aceInTheHole" type="Button"]
+[node name="aceInTheHole" type="Button" unique_id=1858372648]
 offset_right = 8.0
 offset_bottom = 8.0
 script = ExtResource("1_kanmp")
 powerUpName = "AceInTheHole"
+description = "pulls an ace from the deck"
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

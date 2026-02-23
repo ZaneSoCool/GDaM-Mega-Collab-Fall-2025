@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://mgfp5il7um32"]
+[gd_scene format=3 uid="uid://mgfp5il7um32"]
 
 [ext_resource type="Script" uid="uid://bh17og0jsw6hq" path="res://Scripts/powerUps/sickleCell.gd" id="1_7b8ft"]
 
-[node name="sickleCell" type="Button"]
+[node name="sickleCell" type="Button" unique_id=1893559602]
 offset_right = 8.0
 offset_bottom = 8.0
 script = ExtResource("1_7b8ft")
 powerUpName = "SickleCell"
+description = "Halves value of all even number cards in current hand."
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

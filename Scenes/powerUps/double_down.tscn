@@ -8,5 +8,7 @@ offset_bottom = 8.0
 text = "DoubleDown"
 script = ExtResource("1_26hs1")
 powerUpName = "DoubleDown"
+description = "Doubles round goal. Ex: 21 -> 42"
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

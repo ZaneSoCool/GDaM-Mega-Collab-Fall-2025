@@ -1,11 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3a2probmpqiv"]
+[gd_scene format=3 uid="uid://b3a2probmpqiv"]
 
 [ext_resource type="Script" uid="uid://cpbi84r01lma0" path="res://Scripts/power_up.gd" id="1_p3i06"]
 
-[node name="powerUp" type="Button"]
+[node name="powerUp" type="Button" unique_id=790842469]
 offset_right = 8.0
 offset_bottom = 8.0
 text = "PowerUp"
 script = ExtResource("1_p3i06")
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

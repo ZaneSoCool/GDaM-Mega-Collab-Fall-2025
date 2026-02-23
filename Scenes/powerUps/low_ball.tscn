@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bsvb0lh0coqig"]
+[gd_scene format=3 uid="uid://bsvb0lh0coqig"]
 
 [ext_resource type="Script" uid="uid://b16wu2c2i6ebc" path="res://Scripts/powerUps/low_ball.gd" id="1_ido78"]
 
-[node name="lowBall" type="Button"]
+[node name="lowBall" type="Button" unique_id=689494333]
 offset_right = 8.0
 offset_bottom = 8.0
 script = ExtResource("1_ido78")
 powerUpName = "LowBall"
+description = "Doubles value of current 1,2,3s"
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

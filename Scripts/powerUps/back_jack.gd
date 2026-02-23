@@ -1,6 +1,6 @@
 extends PowerUp
 
-#prevents player from losing when the dealer draws 21
+#If dealer draws 21, it is treated as 20.
 
 func localUse():
 	blackJackScene.dealerHand = 20

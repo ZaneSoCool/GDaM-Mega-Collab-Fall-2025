@@ -1,6 +1,6 @@
 extends PowerUp
 
-#makes round goal 42 instead of 21
+#doubles round goal
 
 func localUse():
 	blackJackScene.twentyOne *= 2
