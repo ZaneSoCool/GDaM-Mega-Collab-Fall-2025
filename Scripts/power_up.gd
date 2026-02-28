@@ -15,13 +15,13 @@ var desc_text : Label
 var blackJackScene : Node
 
 func _ready() -> void:
-	self.text = powerUpName
+	self.text = powerUpName + " " + str(Global.powerUpQuantityDictionary.get(powerUpName))
 	blackJackScene = get_tree().current_scene
 	
 	desc_text = get_parent().get_parent().find_child("PowerUpDescription")
 
 func use():
-	if canUse() != null and !canUse(): return
+	if !canUse(): return
 	
 	#updates quantity of this powerUp left
 	Global.powerUpQuantityDictionary[powerUpName] -= 1
@@ -29,6 +29,8 @@ func use():
 	#destroys self if player has no more of this powerup
 	if Global.powerUpQuantityDictionary[powerUpName] <= 0:
 		queue_free()
+	else:
+		self.text = powerUpName + ": " + str(Global.powerUpQuantityDictionary.get(powerUpName))
 
 	localUse()
 	

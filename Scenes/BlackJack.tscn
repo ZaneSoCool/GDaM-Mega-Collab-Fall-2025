@@ -17,7 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_15ju2")
-dealer_max_vitality = 20
+dealer_max_vitality = 100
 metadata/_edit_vertical_guides_ = [-202.0]
 
 [node name="BG" type="TextureRect" parent="." unique_id=1327504477]

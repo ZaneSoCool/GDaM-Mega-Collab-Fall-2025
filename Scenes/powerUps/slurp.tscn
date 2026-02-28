@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bl0ml0pfemqiq"]
+
+[ext_resource type="Script" uid="uid://cbo5rr30sfo60" path="res://Scripts/powerUps/slurp.gd" id="1_eo3hx"]
+
+[node name="slurp" type="Button" unique_id=1938957383]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_eo3hx")
+powerUpName = "Slurp"
+description = "Blood cards in hand heal you for their value."
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

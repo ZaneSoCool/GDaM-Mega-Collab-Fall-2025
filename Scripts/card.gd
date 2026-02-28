@@ -9,7 +9,7 @@ class_name Card
 @export var hover_color: Color
 
 var card_id : int = 1 #1,2.. 11 (Jack), 12 (Queen), 13 (King)
-var card_suite : int = 1 #1, 2, 3, 4
+var card_suite : int = 1 #1, 2, 3, 4 (bone, teeth, eye, blood)
 var faceUp : bool = true
 var forPlayer : bool
 
@@ -86,8 +86,6 @@ func _process(delta: float) -> void:
 		
 		prevMousePos = get_global_mouse_position()
 		
-		
-
 func randomizePlacement(randomizePosition : bool):
 	sprite.rotation_degrees = randf_range(-7,7)
 	

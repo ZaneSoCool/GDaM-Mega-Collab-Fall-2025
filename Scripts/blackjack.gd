@@ -269,6 +269,8 @@ func removeCard(forPlayer : bool, cardIndex : int):
 		else:
 			playerHand -= cardValue
 			
+		updateHandValue()
+			
 		#get rid of stuff
 		playerCards.remove_at(cardIndex)
 		cardToRemove.queue_free()
@@ -302,3 +304,9 @@ func checkEndGame():
 	#endgame check
 	if playerHand > twentyOne or dealerHand >= twentyOne:
 		endGame()
+		
+func getCardIndex(id : int, suite : int):
+	for i in playerCards.size():
+		var card = playerCards[i]
+		if card.card_id == id and card.card_suite == suite:
+			return i

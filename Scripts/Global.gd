@@ -11,7 +11,8 @@ var powerUpQuantityDictionary : Dictionary[String, int] = {
 	"LowBall" : 5,
 	"SickleCell" : 5,
 	"AceInTheHole" : 5,
-	"DoubleDown" : 5
+	"DoubleDown" : 5,
+	"Slurp" : 5
 }
 
 #stores references to the scene of a powerUp
@@ -21,5 +22,6 @@ var powerUpRefDictionary : Dictionary[String, String] = {
 	"LowBall" : "res://Scenes/powerUps/low_ball.tscn",
 	"SickleCell" : "res://Scenes/powerUps/sickle_cell.tscn",
 	"AceInTheHole" : "res://Scenes/powerUps/ace_in_the_hole.tscn",
-	"DoubleDown" : "res://Scenes/powerUps/double_down.tscn"
+	"DoubleDown" : "res://Scenes/powerUps/double_down.tscn",
+	"Slurp" : "res://Scenes/powerUps/slurp.tscn"
 }
