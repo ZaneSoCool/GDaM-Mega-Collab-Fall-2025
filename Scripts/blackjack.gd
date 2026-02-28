@@ -108,10 +108,8 @@ func endGame():
 			Global.max_vitality = Global.vitality
 	
 		if Global.current_dealer_vitality <= 0:
-			Global.current_dealer_vitality = 0
-			print("next level")
-			await(get_tree().create_timer(3.0).timeout)
-			SceneTransition.change_scene_to(next_scene)
+			dealerLose()
+
 		else:
 			print("player won : new round")
 			await(get_tree().create_timer(3.0).timeout)
@@ -128,6 +126,12 @@ func endGame():
 			print("player lost : new round")
 			await(get_tree().create_timer(3.0).timeout)
 			SceneTransition.reload_current_scene()
+	
+func dealerLose():
+	Global.current_dealer_vitality = 0
+	print("next level")
+	await(get_tree().create_timer(3.0).timeout)
+	SceneTransition.change_scene_to(next_scene)
 	
 #------------Game/Round Logic------------#
 

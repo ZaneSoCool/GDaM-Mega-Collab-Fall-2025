@@ -7,7 +7,7 @@ offset_right = 8.0
 offset_bottom = 8.0
 script = ExtResource("1_eo3hx")
 powerUpName = "Slurp"
-description = "Blood cards in hand heal you for their value."
+description = "Blood cards in hand heal you for their value and then discarded."
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

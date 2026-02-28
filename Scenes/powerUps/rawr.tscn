@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c0iy7008wpom5"]
+
+[ext_resource type="Script" uid="uid://dm4uveqbxp0m5" path="res://Scripts/powerUps/rawr.gd" id="1_ogcct"]
+
+[node name="rawr" type="Button" unique_id=1938957383]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_ogcct")
+powerUpName = "Rawr"
+description = "Teeth cards in hand deal damage to dealer for their value and then discarded."
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
