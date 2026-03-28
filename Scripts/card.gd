@@ -50,6 +50,7 @@ func setup_card_texture(value : int, suit : int):
 	elif suit == 4:
 		sprite.texture = blood_text
 
+	sprite.hframes = 13
 	sprite.frame = value - 1
 
 func _on_mouse_entered() -> void:

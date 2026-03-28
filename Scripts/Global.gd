@@ -1,19 +1,20 @@
 extends Node
 
+var dealer_health_scalar : int = 1
 var current_dealer_vitality : int = 0
 var vitality : int = 100
 var max_vitality : int = 100 #not a cap but a tracker of the highest the player's vitality has reached
 
 #stores quantity of power ups player has
 var powerUpQuantityDictionary : Dictionary[String, int] = {
-	"Equivalent Exchange" : 5,
-	"Backjack" : 5,
-	"LowBall" : 5,
-	"SickleCell" : 5,
-	"AceInTheHole" : 5,
-	"DoubleDown" : 5,
-	"Slurp" : 5,
-	"Rawr" : 5
+	"Equivalent Exchange" : 0,
+	"Backjack" : 0,
+	"LowBall" : 0,
+	"SickleCell" : 0,
+	"AceInTheHole" : 0,
+	"DoubleDown" : 0,
+	"Slurp" : 0,
+	"Rawr" : 0
 }
 
 #stores references to the scene of a powerUp

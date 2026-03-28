@@ -38,14 +38,22 @@ var twentyOne := 21
 	#vitality
 @onready var player_vitality_bar: ProgressBar = $playerVitalityBar
 @onready var dealer_vitality_bar: ProgressBar = $dealerVitalityBar
+@onready var player_vitality_bar_label: Label = $playerVitalityBar/Label
+@onready var dealer_vitality_bar_label: Label = $dealerVitalityBar/Label
+
+
 	#powerups
 @onready var power_ups: GridContainer = $LeftBar/PowerUps
+
+@onready var winandlose: Label = $winandlose
 
 var cardScene = preload("res://Scenes/Card.tscn")
 
 #setup
 func _ready() -> void:
 	#-----------init scene-----------
+	
+	dealer_max_vitality = roundi(dealer_max_vitality * Global.dealer_health_scalar)
 	
 	#sets up dealer health
 	if Global.current_dealer_vitality <= 0:
@@ -60,6 +68,7 @@ func _ready() -> void:
 	#setup player health bar
 	player_vitality_bar.value = Global.vitality
 	player_vitality_bar.max_value = Global.max_vitality
+	player_vitality_bar_label.text = str(player_vitality_bar.value) + " / " + str(player_vitality_bar.max_value)
 	
 	#sets up the dealers max vitality if this is the first match against this dealer (this is the case if dealer vitality is <=0)
 	if Global.current_dealer_vitality <= 0:
@@ -68,6 +77,7 @@ func _ready() -> void:
 	#setup dealer health bar
 	dealer_vitality_bar.max_value = dealer_max_vitality
 	dealer_vitality_bar.value = Global.current_dealer_vitality
+	dealer_vitality_bar_label.text = str(dealer_vitality_bar.value) + " / " + str(dealer_vitality_bar.max_value)
 	
 	#setup powerUps
 	for powerUpKey in Global.powerUpQuantityDictionary:
@@ -111,27 +121,37 @@ func endGame():
 			dealerLose()
 
 		else:
-			print("player won : new round")
-			await(get_tree().create_timer(3.0).timeout)
+			flipAllCards()
+			winandlose.text = "Hand Won"
+			winandlose.visible = true
+			await(get_tree().create_timer(2.0).timeout)
 			SceneTransition.reload_current_scene()
 		
 	else:
 		Global.vitality -= currentBet
 		
 		if Global.vitality <= 0:
-			print("game over")
-			await(get_tree().create_timer(3.0).timeout)
+			flipAllCards()
+			winandlose.text = "Game Over"
+			winandlose.visible = true
+			await(get_tree().create_timer(2.0).timeout)
 			SceneTransition.change_scene_to("res://Scenes/Menu.tscn")
 		else:
-			print("player lost : new round")
-			await(get_tree().create_timer(3.0).timeout)
+			flipAllCards()
+			winandlose.text = "Hand Lost"
+			winandlose.visible = true
+			await(get_tree().create_timer(2.0).timeout)
 			SceneTransition.reload_current_scene()
 	
 func dealerLose():
 	Global.current_dealer_vitality = 0
-	print("next level")
-	await(get_tree().create_timer(3.0).timeout)
+	flipAllCards()
+	winandlose.text = "Round Won"
+	winandlose.visible = true
+	await(get_tree().create_timer(2.0).timeout)
+	Global.dealer_health_scalar *= 1.5
 	SceneTransition.change_scene_to(next_scene)
+	
 	
 #------------Game/Round Logic------------#
 
@@ -314,3 +334,8 @@ func getCardIndex(id : int, suite : int):
 		var card = playerCards[i]
 		if card.card_id == id and card.card_suite == suite:
 			return i
+
+func flipAllCards():
+	var allCards = dealerCards+playerCards
+	for card in allCards:
+		card.setup_card_texture(card.card_id, card.card_suite)

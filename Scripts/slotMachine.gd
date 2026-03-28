@@ -6,9 +6,14 @@ extends Control
 @onready var top_not_purchased: TextureRect = $topNotPurchased
 @onready var bottom_not_purchased: TextureRect = $bottomNotPurchased
 @onready var vitality_label: Label = $Vitality
+@onready var winslabel: Label = $winslabel
+@onready var wonItemsLabel: Label = $wonItemsLabel
 
 @export var purchasedTop : bool = false
 @export var purchasedBottom : bool = false
+@onready var anim: AnimationPlayer = $AnimationPlayer
+
+var listOfWonItems : Array[String]
 
 var slots = {
 	0 : [],
@@ -24,6 +29,12 @@ func _ready() -> void:
 	vitality_label.text = "Vitality: " + str(Global.vitality)
 
 func _on_spin_button_pressed() -> void:
+	if Global.vitality <= 5:
+		return
+	
+	Global.vitality -= 5
+	vitality_label.text = "Vitality: " + str(Global.vitality)
+	
 	for row in slots:
 		for slot in slots[row]:
 			slot.spin(symbols)
@@ -61,21 +72,31 @@ func readSlots():
 	giveRewards(wins)
 	
 func giveRewards(wins : int):
-	print("slot wins = " + str(wins))
+	winslabel.text = "You got " + str(wins) + " wins!"
+	if wins > 0:
+		anim.play("won")
+	else:
+		anim.play("lose")
+	
 	for win in wins: #gives player a random powerUp for each win
 		var powerUpKeys = Global.powerUpQuantityDictionary.keys()
 		var randomPowerUpKey = powerUpKeys[randi() % powerUpKeys.size()]
 		Global.powerUpQuantityDictionary[randomPowerUpKey] += 1
+		listOfWonItems.append(str(randomPowerUpKey))
+		
+	wonItemsLabel.text = "Unlocked powerupsl " + str(listOfWonItems)
 
 func _on_purchase_top_button_pressed() -> void:
-	#if Global.vitality > 20:
-		#Global.vitality -= 20
+	if Global.vitality > 20:
+		Global.vitality -= 20
+		vitality_label.text = "Vitality: " + str(Global.vitality)
 		purchasedTop = true
 		top_not_purchased.visible = false
 
 func _on_purchase_bottom_button_pressed() -> void:
-	#if Global.vitality > 20:
-		#Global.vitality -= 20
+	if Global.vitality > 20:
+		Global.vitality -= 20
+		vitality_label.text = "Vitality: " + str(Global.vitality)
 		purchasedBottom = true
 		bottom_not_purchased.visible = false
 
@@ -88,3 +109,7 @@ func checkSlot(symbol : Texture, x, y): #returns true if slot matches symbol
 			return true
 		
 	return false
+
+
+func _on_nextlevel_button_pressed() -> void:
+	SceneTransition.change_scene_to("res://Scenes/BlackJack.tscn")

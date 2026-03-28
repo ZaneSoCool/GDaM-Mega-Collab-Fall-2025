@@ -17,7 +17,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_15ju2")
-dealer_max_vitality = 100
+dealer_max_vitality = 20
+next_scene = "res://Scenes/SlotMachine.tscn"
 metadata/_edit_vertical_guides_ = [-202.0]
 
 [node name="BG" type="TextureRect" parent="." unique_id=1327504477]
@@ -56,6 +57,22 @@ offset_top = 570.0
 offset_right = 452.0
 offset_bottom = 620.0
 mouse_filter = 2
+show_percentage = false
+
+[node name="Label" type="Label" parent="playerVitalityBar" unique_id=1146458585]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "100/100"
 
 [node name="dealerVitalityBar" type="ProgressBar" parent="." unique_id=305924523]
 z_index = 1
@@ -65,6 +82,22 @@ offset_top = 32.0
 offset_right = 528.0
 offset_bottom = 82.0
 mouse_filter = 2
+show_percentage = false
+
+[node name="Label" type="Label" parent="dealerVitalityBar" unique_id=2052376618]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "100/100"
 
 [node name="Data" type="VBoxContainer" parent="." unique_id=1930163351]
 layout_mode = 0
@@ -232,6 +265,24 @@ size_flags_horizontal = 6
 text = "description here hello"
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="winandlose" type="Label" parent="." unique_id=1998195673]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -11.5
+offset_right = 50.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "YOU BUSTED"
 
 [connection signal="pressed" from="playButtons/Hit" to="." method="_on_hit_pressed"]
 [connection signal="pressed" from="playButtons/Stand" to="." method="_on_stand_pressed"]
