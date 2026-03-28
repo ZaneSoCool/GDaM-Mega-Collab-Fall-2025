@@ -14,6 +14,7 @@ extends Control
 @onready var anim: AnimationPlayer = $AnimationPlayer
 
 var listOfWonItems : Array[String]
+var spinCost : int = 5
 
 var slots = {
 	0 : [],
@@ -29,10 +30,10 @@ func _ready() -> void:
 	vitality_label.text = "Vitality: " + str(Global.vitality)
 
 func _on_spin_button_pressed() -> void:
-	if Global.vitality <= 5:
+	if Global.vitality <= spinCost:
 		return
 	
-	Global.vitality -= 5
+	Global.vitality -= spinCost
 	vitality_label.text = "Vitality: " + str(Global.vitality)
 	
 	for row in slots:
@@ -41,6 +42,9 @@ func _on_spin_button_pressed() -> void:
 		
 	readSlots()
 	vitality_label.text = "Vitality: " + str(Global.vitality)
+	
+	spinCost = roundi(spinCost * 1.4)
+	$SpinButton.text = "Spin $" + str(spinCost)
 
 func getSlots():
 	for i in range(grid.get_child_count()):

@@ -18,6 +18,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_15ju2")
 dealer_max_vitality = 20
+minimumBet = 1
 next_scene = "res://Scenes/SlotMachine.tscn"
 metadata/_edit_vertical_guides_ = [-202.0]
 
@@ -139,14 +140,17 @@ alignment = 1
 
 [node name="Hit" type="Button" parent="playButtons" unique_id=397636801]
 layout_mode = 2
+tooltip_text = "Get dealt another card."
 text = "Hit"
 
 [node name="Stand" type="Button" parent="playButtons" unique_id=1220319460]
 layout_mode = 2
+tooltip_text = "Stop being dealt cards."
 text = "Stand"
 
 [node name="Double Down" type="Button" parent="playButtons" unique_id=1927427849]
 layout_mode = 2
+tooltip_text = "Double your bet, and get dealt another card."
 text = "Double Down"
 
 [node name="betButtons" type="HBoxContainer" parent="." unique_id=2043701205]
@@ -162,6 +166,7 @@ offset_right = 386.00012
 offset_bottom = 286.0
 grow_horizontal = 2
 grow_vertical = 2
+tooltip_text = "Get dealt another card."
 theme_override_constants/separation = 30
 alignment = 1
 
@@ -215,6 +220,7 @@ alignment = 1
 [node name="PlayerCardsVisualized" type="HBoxContainer" parent="PlayerHand" unique_id=938379931]
 custom_minimum_size = Vector2(0, 102)
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 15
 alignment = 1
 
