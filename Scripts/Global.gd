@@ -11,7 +11,7 @@ var powerUpQuantityDictionary : Dictionary[String, int] = {
 	"Backjack" : 0,
 	"LowBall" : 0,
 	"SickleCell" : 0,
-	"AceInTheHole" : 0,
+	"AceInTheHole" : 1,
 	"DoubleDown" : 0,
 	"Slurp" : 0,
 	"Rawr" : 0

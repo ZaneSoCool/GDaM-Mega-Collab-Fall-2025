@@ -9,3 +9,6 @@ func checkUse():
 	#check if dealer has 21
 	if blackJackScene.dealerHand == 21:
 		use()
+
+func canUse():
+	return true

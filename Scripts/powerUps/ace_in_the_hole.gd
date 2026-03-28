@@ -4,3 +4,6 @@ extends PowerUp
 
 func localUse():
 	blackJackScene.dealSpecificCard(true, true, 1, 0)
+
+func canUse():
+	return true

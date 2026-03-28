@@ -12,8 +12,8 @@ extends Control
 #internal variables
 var playerHand = 0
 var dealerHand = 0
-var playerCards = []
-var dealerCards = []
+var playerCards : Array[Card] = []
+var dealerCards : Array[Card] = []
 var passivePowerups = []
 
 var deck : Array[Array] = []
@@ -178,11 +178,11 @@ func dealCard(forPlayer : bool, faceUp : bool):
 	
 	if forPlayer:
 		playerCards.append(card)
-		totalHand(forPlayer, card_info)
+		totalHand(forPlayer)
 		player_cards_visualized.add_child(card)
 	else:
 		dealerCards.append(card)
-		totalHand(forPlayer, card_info)
+		totalHand(forPlayer)
 		dealer_cards_visualized.add_child(card)
 		
 	checkEndGame()
@@ -209,38 +209,43 @@ func dealSpecificCard(forPlayer : bool, faceUp : bool, card_id : int, card_suit 
 	
 	if forPlayer:
 		playerCards.append(card)
-		totalHand(forPlayer, card_info)
+		totalHand(forPlayer)
 		player_cards_visualized.add_child(card)
 	else:
 		dealerCards.append(card)
-		totalHand(forPlayer, card_info)
+		totalHand(forPlayer)
 		dealer_cards_visualized.add_child(card)
 		
 	checkEndGame()
 
 #sums up hand for stuff
-func totalHand(forPlayer : bool, card_info : Array):
-	
+func totalHand(forPlayer : bool):
 	if forPlayer:
-		if card_info[0] > 10:
-			playerHand += 10
-		elif card_info[0] == 1:
-			if playerHand + 11 > twentyOne:
-				playerHand += 1
+		sortCards(playerCards)
+		playerHand = 0
+		for card in playerCards:
+			if card.card_id > 10:
+				playerHand += 10
+			elif card.card_id == 1:
+				if playerHand + 11 > twentyOne:
+					playerHand += 1
+				else:
+					playerHand += 11
 			else:
-				playerHand += 11
-		else:
-			playerHand += card_info[0]
+				playerHand += card.card_id
 	else:
-		if card_info[0] > 10:
-			dealerHand += 10
-		elif card_info[0] == 1:
-			if dealerHand + 11 > twentyOne:
-				dealerHand += 1
+		sortCards(dealerCards)
+		dealerHand = 0
+		for card in dealerCards:
+			if card.card_id > 10:
+				dealerHand += 10
+			elif card.card_id == 1:
+				if dealerHand + 11 > twentyOne:
+					dealerHand += 1
+				else:
+					dealerHand += 11
 			else:
-				dealerHand += 11
-		else:
-			dealerHand += card_info[0]
+				dealerHand += card.card_id
 			
 	updateHandValue()
 
@@ -339,3 +344,6 @@ func flipAllCards():
 	var allCards = dealerCards+playerCards
 	for card in allCards:
 		card.setup_card_texture(card.card_id, card.card_suite)
+
+func sortCards(hand : Array[Card]):
+	hand.sort_custom(func(a, b): return a.card_id > b.card_id)
