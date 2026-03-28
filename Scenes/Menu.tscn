@@ -40,7 +40,7 @@ alignment = 1
 
 [node name="Title" type="Label" parent="VBoxContainer" unique_id=1923076440]
 layout_mode = 2
-text = "cool title"
+text = "THDA 203 1-4pm Saturdays"
 label_settings = SubResource("LabelSettings_uubjt")
 horizontal_alignment = 1
 
