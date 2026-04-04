@@ -3,6 +3,7 @@ extends Control
 #Made by Henry
 
 func _on_button_pressed() -> void:
+	Global.vitality = 100
 	SoundController.buttonPressed()
 	SceneTransition.change_scene_to("res://Scenes/BlackJack.tscn")
 
