@@ -20,6 +20,7 @@ func _ready() -> void:
 	
 	desc_text = get_parent().get_parent().find_child("PowerUpDescription")
 
+## Uses up an instance of a given powerup, and executes [method localUse]
 func use():
 	if !canUse(): return
 	
@@ -34,6 +35,7 @@ func use():
 
 	localUse()
 	
+## Helper function for more specific actions dependent on powerup
 func localUse():
 	pass
 
@@ -41,10 +43,12 @@ func _on_pressed() -> void:
 	if isPassive: return
 	use()
 
-func checkUse(): #checks if card should be used automatically
+## Checks if card should be used automatically
+func checkUse(): 
 	pass
 
-func canUse(): #returns true or false based on if powerup is allowed to be used
+## Returns a boolean stating if powerup is allowed to be used
+func canUse():
 	pass
 
 func _on_mouse_entered() -> void:

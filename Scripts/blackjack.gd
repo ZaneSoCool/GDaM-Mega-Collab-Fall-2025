@@ -1,6 +1,6 @@
 extends Control
 
-#Made by Elisa, Garner, and Zane
+#Made by Elisa, Garner, Zane, and Christopher
 
 #external variables
 @export var dealer_max_vitality : int
@@ -17,7 +17,6 @@ var dealerCards : Array[Card] = []
 var passivePowerups = []
 
 var deck : Array[Array] = []
-var playing : bool = true
 var currentBet : int
 
 var twentyOne := 21
@@ -97,6 +96,7 @@ func _ready() -> void:
 			deck.append([j + 1, i + 1])
 	deck.shuffle()
 	
+## Deals cards at the start of a new round
 func dealCards():
 	#deal cards
 	dealCard(true, true)
@@ -105,9 +105,9 @@ func dealCards():
 	dealCard(false, false)
 
 	play_buttons.visible = true
-	
+
+## Endgame logic for a Blackjack round.
 func endGame():
-	playing = false
 	play_buttons.visible = false
 	
 	if dealerHand > twentyOne or (playerHand > dealerHand and playerHand <= twentyOne):
@@ -117,40 +117,39 @@ func endGame():
 		if Global.vitality > Global.max_vitality: #update max vitality if vitality surpasses it
 			Global.max_vitality = Global.vitality
 	
+		flipAllCards()
 		if Global.current_dealer_vitality <= 0:
 			dealerLose()
 
 		else:
-			flipAllCards()
-			winandlose.text = "Hand Won"
-			winandlose.visible = true
-			await(get_tree().create_timer(2.0).timeout)
-			SceneTransition.reload_current_scene()
+			transitionNextScene("Hand Won")
 		
 	else:
 		Global.vitality -= currentBet
-		
+		flipAllCards()
+
 		if Global.vitality <= 0:
-			flipAllCards()
-			winandlose.text = "Game Over"
-			winandlose.visible = true
-			await(get_tree().create_timer(2.0).timeout)
-			SceneTransition.change_scene_to("res://Scenes/Menu.tscn")
+			transitionNextScene("Game Over", "res://Scenes/Menu.tscn")
 		else:
-			flipAllCards()
-			winandlose.text = "Hand Lost"
-			winandlose.visible = true
-			await(get_tree().create_timer(2.0).timeout)
-			SceneTransition.reload_current_scene()
+			transitionNextScene("Hand Lost")
+
+## Updates dealer's health multiplier, and transitions to the next round
+func dealerLose(): # Lowkey unneeded imho
+	Global.current_dealer_vitality = 0 
+	Global.dealer_health_scalar *= 1.5
+	transitionNextScene("Round Won", next_scene)
 	
-func dealerLose():
-	Global.current_dealer_vitality = 0
-	flipAllCards()
-	winandlose.text = "Round Won"
+## Shows inputted text onto screen, and transitions to the next scene, if inputted.
+##
+## [param nextScene] is a filepath, stored as a string. If no scene is inputted, the current scene will reload.
+func transitionNextScene(roundText: String, nextScene = null):
+	winandlose.text = roundText
 	winandlose.visible = true
 	await(get_tree().create_timer(2.0).timeout)
-	Global.dealer_health_scalar *= 1.5
-	SceneTransition.change_scene_to(next_scene)
+	if nextScene != null:
+		SceneTransition.change_scene_to(nextScene)
+	else:
+		SceneTransition.reload_current_scene()
 	
 	
 #------------Game/Round Logic------------#
@@ -158,13 +157,18 @@ func dealerLose():
 func dealerTurn():
 	play_buttons.visible = false
 	
-	while playing:
-		var randomness = randi_range(-AI_randomness, AI_randomness)
-		if dealerHand < (AI_hit_stop + randomness):
-			dealCard(false, true)
-		else:
-			endGame()
+	var randomness = randi_range(-AI_randomness, AI_randomness)
+	while dealerHand < (AI_hit_stop + randomness):
+		dealCard(false, true)
+		randomness = randi_range(-AI_randomness, AI_randomness)
+	
+	endGame()
 
+
+## Deals a card.
+##
+## Set [param forPlayer] to [code]true[/code] if card is for the player, and [code]false[/code] if it's for the dealer
+## [br] [param faceUp] dictates whether the given card's value can be seen by the player when dealt
 func dealCard(forPlayer : bool, faceUp : bool):
 	var card = cardScene.instantiate()
 	
@@ -187,7 +191,12 @@ func dealCard(forPlayer : bool, faceUp : bool):
 		
 	checkEndGame()
 		
-func dealSpecificCard(forPlayer : bool, faceUp : bool, card_id : int, card_suit : int): #if card id or suit is 0 it will be random
+## Deals a sepcific card for the player/dealer, depending on [param forPlayer].
+##
+## If [param card_id] or [param card_suit] is 0, The dealt card will be random
+##[br][br] Editor's note: This is like exactoly the same as [method dealSpecificCard]. 
+## [br] [br] What the fuck.
+func dealSpecificCard(forPlayer : bool, faceUp : bool, card_id : int, card_suit : int): 
 	var card = cardScene.instantiate()
 	
 	var card_info : Array #finds suitable card
@@ -218,48 +227,44 @@ func dealSpecificCard(forPlayer : bool, faceUp : bool, card_id : int, card_suit 
 		
 	checkEndGame()
 
-#sums up hand for stuff
+## Sums up the total hand value for the player/dealer 
 func totalHand(forPlayer : bool):
 	if forPlayer:
-		sortCards(playerCards)
-		playerHand = 0
-		for card in playerCards:
-			if card.card_id > 10:
-				playerHand += 10
-			elif card.card_id == 1:
-				if playerHand + 11 > twentyOne:
-					playerHand += 1
-				else:
-					playerHand += 11
-			else:
-				playerHand += card.card_id
+		playerHand = sumCardHand(playerCards)
 	else:
-		sortCards(dealerCards)
-		dealerHand = 0
-		for card in dealerCards:
-			if card.card_id > 10:
-				dealerHand += 10
-			elif card.card_id == 1:
-				if dealerHand + 11 > twentyOne:
-					dealerHand += 1
-				else:
-					dealerHand += 11
-			else:
-				dealerHand += card.card_id
+		dealerHand = sumCardHand(dealerCards)
 			
 	updateHandValue()
 
+## [b][i][u]ACTUALLY[/u][/i][/b]
+## sums up the the total hand value for the given player, and returns it.
+## [param cards] contains the all of the player's dealt cards.
+func sumCardHand(cards: Array[Card]):
+	sortCards(cards)
+	var handValue = 0
+	for card in cards:
+		if card.card_id > 10:
+			handValue += 10
+		elif card.card_id == 1:
+			if handValue + 11 > twentyOne:
+				handValue += 1
+			else:
+				handValue += 11
+		else:
+			handValue += card.card_id
+	return handValue
+
 #------------- Buttons Pressed -------------
 
-#Hit
+## Hit button
 func _on_hit_pressed() -> void:
 	dealCard(true, true)
 
-#Stand
+## Stand button
 func _on_stand_pressed() -> void:
 	dealerTurn()
 
-#Double Down (NOT POWERUP)
+## Double Down button (NOT POWERUP)
 func _on_double_down_pressed() -> void:
 	if currentBet * 2 > Global.vitality:
 		return
@@ -283,46 +288,33 @@ func _on_submit_pressed() -> void:
 
 func removeCard(forPlayer : bool, cardIndex : int):
 	if forPlayer:
-		if playerCards.is_empty(): return
-		
-		var cardToRemove = playerCards[cardIndex]
-		var cardValue = cardToRemove.card_id
-		
-		if cardValue >= 10:
-			playerHand -= 10
-		elif cardValue == 1:
-			if playerHand - 11 <= 0: ##TODO this check is insufficient
-				playerHand -= 1
-			else:
-				playerHand -= 11
-		else:
-			playerHand -= cardValue
-			
+		removeCardHelper(playerCards, playerHand, cardIndex)
 		updateHandValue()
-			
-		#get rid of stuff
-		playerCards.remove_at(cardIndex)
-		cardToRemove.queue_free()
 	else:
-		if dealerCards.is_empty(): return
+		removeCardHelper(dealerCards, dealerHand, cardIndex)
+
 		
-		var cardToRemove = dealerCards[cardIndex]
-		var cardValue = cardToRemove.card_id
+func removeCardHelper(cards: Array[Card], handValue: int, cardIndex: int):
+	if cards.is_empty(): return
 		
-		if cardValue >= 10:
-			dealerHand -= 10
-		elif cardValue == 1:
-			if dealerHand - 11 <= 0: ##TODO this check is insufficient
-				dealerHand -= 1
-			else:
-				dealerHand -= 11
-		else:
-			dealerHand -= cardValue
-			
-		#get rid of stuff
-		dealerCards.remove_at(cardIndex)
-		cardToRemove.queue_free()
+	var cardToRemove = cards[cardIndex]
+	var cardValue = cardToRemove.card_id
 	
+	if cardValue >= 10:
+		handValue -= 10
+	elif cardValue == 1:
+		if handValue - 11 <= 0: ##TODO this check is insufficient
+			handValue -= 1
+		else:
+			handValue -= 11
+	else:
+		handValue -= cardValue
+		
+	#get rid of stuff
+	cards.remove_at(cardIndex)
+	cardToRemove.queue_free()
+
+## Updates hand value for the player
 func updateHandValue():
 	player_hand_value.text = "Hand Value : " + str(playerHand)
 
@@ -334,16 +326,19 @@ func checkEndGame():
 	if playerHand > twentyOne or dealerHand >= twentyOne:
 		endGame()
 		
+## Gets the index for a given card
 func getCardIndex(id : int, suite : int):
 	for i in playerCards.size():
 		var card = playerCards[i]
 		if card.card_id == id and card.card_suite == suite:
 			return i
 
+## Flips all cards
 func flipAllCards():
 	var allCards = dealerCards+playerCards
 	for card in allCards:
 		card.setup_card_texture(card.card_id, card.card_suite)
 
+## Sorts card for the given hand of dealt cards
 func sortCards(hand : Array[Card]):
 	hand.sort_custom(func(a, b): return a.card_id > b.card_id)
