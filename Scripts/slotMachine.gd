@@ -91,15 +91,15 @@ func giveRewards(wins : int):
 	wonItemsLabel.text = "Unlocked powerupsl " + str(listOfWonItems)
 
 func _on_purchase_top_button_pressed() -> void:
-	if Global.vitality > 20:
-		Global.vitality -= 20
+	if Global.vitality > 50:
+		Global.vitality -= 50
 		vitality_label.text = "Vitality: " + str(Global.vitality)
 		purchasedTop = true
 		top_not_purchased.visible = false
 
 func _on_purchase_bottom_button_pressed() -> void:
-	if Global.vitality > 20:
-		Global.vitality -= 20
+	if Global.vitality > 50:
+		Global.vitality -= 50
 		vitality_label.text = "Vitality: " + str(Global.vitality)
 		purchasedBottom = true
 		bottom_not_purchased.visible = false

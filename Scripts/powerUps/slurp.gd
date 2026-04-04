@@ -10,6 +10,7 @@ func localUse():
 			blackJackScene.removeCard(true, blackJackScene.getCardIndex(card.card_id, card.card_suite))
 				
 	blackJackScene.player_vitality_bar.value = Global.vitality
+	blackJackScene.player_vitality_bar_label.text = str(blackJackScene.player_vitality_bar.value) + " / " + str(blackJackScene.player_vitality_bar.max_value)
 
 func canUse():
 	if blackJackScene.playerCards.is_empty() or Global.vitality >= Global.max_vitality:
