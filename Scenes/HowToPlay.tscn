@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://pgooclpw6yyk"]
+
+[ext_resource type="Texture2D" uid="uid://dsl0ajnhvrc1w" path="res://Assets/Textures/menus/Solid Colour - Burgundy Red.jpg" id="1_0mtfm"]
+[ext_resource type="Script" uid="uid://yd37x11r4wxj" path="res://Scripts/credits.gd" id="1_gmf7q"]
+[ext_resource type="Theme" uid="uid://2y7w663pawyl" path="res://menubuttontheme.tres" id="2_gmf7q"]
+
+[node name="HowToPlay" type="Control" unique_id=27577708]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gmf7q")
+
+[node name="BG" type="TextureRect" parent="." unique_id=73242373]
+layout_mode = 1
+offset_right = 377.83105
+offset_bottom = 429.01047
+scale = Vector2(3.048982, 1.5104527)
+texture = ExtResource("1_0mtfm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1317508560]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 95.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=1776961984]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "How To Play"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2027833525]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 0
+offset_left = 64.0
+offset_top = 131.0
+offset_right = 1088.0
+offset_bottom = 591.0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=337675748]
+custom_minimum_size = Vector2(450, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="bjText" type="Label" parent="HBoxContainer/VBoxContainer2" unique_id=350170717]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Blackjack"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bjBody" type="Label" parent="HBoxContainer/VBoxContainer2" unique_id=662874435]
+layout_mode = 2
+text = "Each round, you will go up against the dealer in a standard round of blackjack. Place a bet (with your own health or \"vitality\"), and get as close to 21 as possible without busting. 
+
+After you're dealt your first two cards, you can either \"hit\" for another card, \"stand\" and stop drawing cards, or \"double down,\" where you double your wager and draw one more card.
+
+Ties go to the dealer. If you're closer to 21 without going over, you gain vitality and the dealer loses the same amount you bet. Try and get their vitality to zero. Use your powerups to get the upper hand."
+autowrap_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1378288220]
+custom_minimum_size = Vector2(450, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="slotsTitle" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=807196845]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Slots"
+horizontal_alignment = 1
+
+[node name="slotsBody" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=741569047]
+layout_mode = 2
+text = "After you win a round against the house, you will be led towards the slots. You can spend your vitality to spin and win some powerups. Match 3 symbols from left to right to win.
+
+You start off with only the middle row, but you can spend extra vitality to unlock more rows. They are only unlocked for that round. 
+
+Smiley faces are \"wild.\" They match with any symbol. "
+autowrap_mode = 3
+
+[node name="menu" type="Button" parent="." unique_id=1868531438]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -57.0
+offset_right = 576.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_gmf7q")
+text = "Menu"
+
+[connection signal="pressed" from="menu" to="." method="_on_menu_pressed"]

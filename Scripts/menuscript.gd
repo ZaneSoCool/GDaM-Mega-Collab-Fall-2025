@@ -12,3 +12,6 @@ func _on_button_2_pressed() -> void:
 
 func _on_credits_button_pressed() -> void:
 	SceneTransition.change_scene_to("res://Scenes/credits.tscn")
+	
+func _on_how_to_play_button_pressed() -> void:
+	SceneTransition.change_scene_to("res://Scenes/HowToPlay.tscn")

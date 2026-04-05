@@ -238,7 +238,7 @@ func totalHand(forPlayer : bool):
 
 ## [b][i][u]ACTUALLY[/u][/i][/b]
 ## sums up the the total hand value for the given player, and returns it.
-## [param cards] contains the all of the player's dealt cards.
+## [param cards] contains all of the player's dealt cards.
 func sumCardHand(cards: Array[Card]):
 	sortCards(cards)
 	var handValue = 0
@@ -286,6 +286,7 @@ func _on_submit_pressed() -> void:
 
 #----------------Extra-Powerup-Logic--------------------
 
+## Removes the [param cardIndex]-th card from the chosen player's hand.
 func removeCard(forPlayer : bool, cardIndex : int):
 	if forPlayer:
 		removeCardHelper(playerCards, playerHand, cardIndex)
@@ -293,7 +294,7 @@ func removeCard(forPlayer : bool, cardIndex : int):
 	else:
 		removeCardHelper(dealerCards, dealerHand, cardIndex)
 
-		
+## Actually removes the card from the provided deck, and subtracts its worth from the player's hand total.
 func removeCardHelper(cards: Array[Card], handValue: int, cardIndex: int):
 	if cards.is_empty(): return
 		
