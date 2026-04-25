@@ -5,13 +5,11 @@ class_name Card
 
 @onready var sprite: Sprite2D = $Sprite2D
 
-@export var dealer_color: Color
 @export var hover_color: Color
 
 var card_id : int = 1 #1,2.. 11 (Jack), 12 (Queen), 13 (King)
-var card_suite : int = 1 #1, 2, 3, 4 (bone, teeth, eye, blood)
+var card_suit : int = 1 #1, 2, 3, 4 (bone, teeth, eye, blood)
 var faceUp : bool = true
-var forPlayer : bool
 
 var isHovering : bool = false
 var isHeld : bool = false
@@ -30,13 +28,10 @@ const blood_text = preload("res://Assets/Textures/cards/blood.png")
 func _ready() -> void:
 	if faceUp:
 		sprite.hframes = 13
-		setup_card_texture(card_id, card_suite)
+		setup_card_texture(card_id, card_suit)
 	else:
 		sprite.hframes = 1
 		sprite.texture = back_texture
-		
-	if !forPlayer:
-		sprite.self_modulate = dealer_color
 	
 	randomizePlacement(true)
 		
@@ -55,18 +50,12 @@ func setup_card_texture(value : int, suit : int):
 
 func _on_mouse_entered() -> void:
 	isHovering = true
-	if forPlayer:
-		sprite.self_modulate = hover_color
-	else:
-		sprite.self_modulate = hover_color * dealer_color
+	sprite.self_modulate = hover_color
 
 func _on_mouse_exited() -> void:
 	isHovering = false
 	if !isHeld:
-		if forPlayer:
-			sprite.self_modulate = Color.WHITE
-		else:
-			sprite.self_modulate = dealer_color
+		sprite.self_modulate = Color.WHITE
 	
 func _input(event: InputEvent) -> void:
 	if isHovering and Input.is_action_just_pressed("click"):

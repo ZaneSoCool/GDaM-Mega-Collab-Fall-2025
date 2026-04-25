@@ -195,6 +195,7 @@ theme_override_constants/separation = 20
 alignment = 1
 
 [node name="DealersCardsVisualized" type="HBoxContainer" parent="DealerHand" unique_id=850408073]
+modulate = Color(1, 0.8192723, 0.7889782, 1)
 custom_minimum_size = Vector2(0, 102)
 layout_mode = 2
 theme_override_constants/separation = 15

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsqerjij0du5h"]
+[gd_scene format=3 uid="uid://dsqerjij0du5h"]
 
 [ext_resource type="Script" uid="uid://b0rfmnp7vkpm7" path="res://Scripts/scene_transition.gd" id="1_jiq3i"]
 
@@ -91,11 +91,11 @@ _data = {
 &"startup": SubResource("Animation_04ho8")
 }
 
-[node name="SceneTransition" type="CanvasLayer"]
+[node name="SceneTransition" type="CanvasLayer" unique_id=2113118815]
 layer = 2
 script = ExtResource("1_jiq3i")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=2117029774]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -104,7 +104,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=136310212]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -115,13 +115,11 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
-libraries = {
-&"": SubResource("AnimationLibrary_gbkcp")
-}
-autoplay = "startup"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control" unique_id=2108345399]
+libraries/ = SubResource("AnimationLibrary_gbkcp")
+autoplay = &"startup"
 
-[node name="TextureRect" type="TextureRect" parent="Control"]
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=1586393791]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 1152.0

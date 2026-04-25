@@ -8,7 +8,7 @@ func change_scene_to(new_scene : String):
 	get_tree().change_scene_to_file(new_scene)
 	anim.play_backwards("go")
 
-func reload_current_scene():
+func restart_current_scene():
 	anim.play("go")
 	await(anim.animation_finished)
 	get_tree().reload_current_scene()
