@@ -14,7 +14,7 @@ func localUse():
 	blackJackScene.clearCards(blackJackScene.playerCards)
 	
 	for card in newPlayerCards:
-		blackJackScene.dealCard(blackJackScene.playerCards, true, card)
+		blackJackScene.dealCard(blackJackScene.playerCards, true, card, true)
 			
 	blackJackScene.updateHandValue()
 

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ddyd05gnpbv0u"]
+
+[ext_resource type="Script" uid="uid://b802bjy1ltsdm" path="res://Scripts/powerUps/suit_swap.gd" id="1_2oai0"]
+
+[node name="suit_swap" type="Button" unique_id=1893559602]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_2oai0")
+powerUpName = "SuitSwap"
+description = "Changes all cards in hand to random suit."
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

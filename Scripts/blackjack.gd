@@ -99,10 +99,10 @@ func _ready() -> void:
 ## Deals cards at the start of a new round
 func dealCards():
 	#deal cards
-	dealCard(playerCards, true, [])
-	dealCard(playerCards, true, [])
-	dealCard(dealerCards, true, [])
-	dealCard(dealerCards, false, [])
+	dealCard(playerCards, true, [], true)
+	dealCard(playerCards, true, [], true)
+	dealCard(dealerCards, true, [], true)
+	dealCard(dealerCards, false, [], true)
 
 	play_buttons.visible = true
 
@@ -150,7 +150,6 @@ func transitionNextScene(roundText: String, nextScene = null):
 		if not playerTempCards.has(card):
 			Global.deck.append([card.card_id, card.card_suit])
 			
-	
 	#visual queue if player won or lost
 	winandlose.text = roundText
 	winandlose.visible = true
@@ -169,8 +168,8 @@ func dealerTurn():
 	play_buttons.visible = false
 	
 	var randomness = randi_range(-AI_randomness, AI_randomness)
-	while dealerHandValue < (AI_hit_stop + randomness):
-		dealCard(dealerCards, true, [])
+	while dealerHandValue < (AI_hit_stop + randomness) and !Global.deck.is_empty():
+		dealCard(dealerCards, true, [], true)
 		randomness = randi_range(-AI_randomness, AI_randomness)
 	
 	endGame()
@@ -181,7 +180,7 @@ func dealerTurn():
 ## Pass in cards [Array of Card] that you are dealing a new card to
 ## [br] [param faceUp] dictates whether the given card's value can be seen by the player when dealt
 ## cardToDeal, if null deals random card, else gives specific card
-func dealCard(cards : Array[Card], faceUp : bool, cardToDeal : Array):
+func dealCard(cards : Array[Card], faceUp : bool, cardToDeal : Array, permanent : bool):
 	var card = cardScene.instantiate()
 	var card_info : Array = cardToDeal #index 0 is id, index 1 is suit
 	
@@ -200,6 +199,8 @@ func dealCard(cards : Array[Card], faceUp : bool, cardToDeal : Array):
 	
 	if cards == playerCards:
 		Global.dealtCard.emit(card)
+		if !permanent:
+			playerTempCards.append(card)
 	
 	cards.append(card)
 	
@@ -246,7 +247,7 @@ func sumCardHand(hand: Array[Card]):
 
 ## Hit button
 func _on_hit_pressed() -> void:
-	dealCard(playerCards, true, [])
+	dealCard(playerCards, true, [], true)
 
 ## Stand button
 func _on_stand_pressed() -> void:
@@ -258,7 +259,7 @@ func _on_double_down_pressed() -> void:
 		return
 	else:
 		currentBet *= 2
-		dealCard(playerCards, true, [])
+		dealCard(playerCards, true, [], true)
 		dealerTurn()
 
 func _on_submit_pressed() -> void:

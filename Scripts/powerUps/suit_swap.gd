@@ -1,15 +1,12 @@
 extends PowerUp
 
-#doubles value of current 1,2,3s
-
 func localUse():
 	var newPlayerCards : Array[Array] = []
 	
+	var newSuit = randi_range(1,4)
+	
 	for card in blackJackScene.playerCards:
-		if card.card_id <= 4:
-			newPlayerCards.append([card.card_id * 2, card.card_suit])
-		else:
-			newPlayerCards.append([card.card_id, card.card_suit])
+		newPlayerCards.append([card.card_id, newSuit])
 		
 	blackJackScene.clearCards(blackJackScene.playerCards)
 	
@@ -22,7 +19,4 @@ func canUse():
 	if blackJackScene.playerCards.is_empty():
 		return false
 	else:
-		for card in blackJackScene.playerCards:
-			if card.card_id < 4:
-				return true
-		return false
+		return true

@@ -15,7 +15,7 @@ func localUse():
 	blackJackScene.removeCard(blackJackScene.playerCards, blackJackScene.getCardIndex(lastDrawnCard.card_id, lastDrawnCard.card_suit))
 
 	#deal a new card
-	blackJackScene.dealCard(blackJackScene.playerCards, true, [])
+	blackJackScene.dealCard(blackJackScene.playerCards, true, [], true)
 
 func canUse():
 	if !blackJackScene.playerCards.is_empty() or lastDrawnCard != null:

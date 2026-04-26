@@ -25,7 +25,8 @@ var powerUpQuantityDictionary : Dictionary[String, int] = {
 	"DoubleDown" : 5,
 	"Slurp" : 5,
 	"Rawr" : 5,
-	"Peek" : 5
+	"Peek" : 5,
+	"SuitSwap" : 5
 }
 
 #stores references to the scene of a powerUp
@@ -38,5 +39,6 @@ var powerUpRefDictionary : Dictionary[String, String] = {
 	"DoubleDown" : "res://Scenes/powerUps/double_down.tscn",
 	"Slurp" : "res://Scenes/powerUps/slurp.tscn",
 	"Rawr" : "res://Scenes/powerUps/rawr.tscn",
-	"Peek" : "res://Scenes/powerUps/peek.tscn"
+	"Peek" : "res://Scenes/powerUps/peek.tscn",
+	"SuitSwap" : "res://Scenes/powerUps/suit_swap.tscn"
 }
