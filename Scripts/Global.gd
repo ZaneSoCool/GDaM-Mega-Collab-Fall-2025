@@ -5,8 +5,6 @@ var current_dealer_vitality : int = 0
 var vitality : int = 100
 var max_vitality : int = 100 #not a cap but a tracker of the highest the player's vitality has reached
 
-var cardScene = preload("res://Scenes/Card.tscn")
-
 var deck : Array[Array] = [] #inner array has two values, index 0 = id, index 1 = suit
 
 signal dealtCard (new_card: Card)
@@ -26,7 +24,8 @@ var powerUpQuantityDictionary : Dictionary[String, int] = {
 	"AceInTheHole" : 5,
 	"DoubleDown" : 5,
 	"Slurp" : 5,
-	"Rawr" : 5
+	"Rawr" : 5,
+	"Peek" : 5
 }
 
 #stores references to the scene of a powerUp
@@ -38,5 +37,6 @@ var powerUpRefDictionary : Dictionary[String, String] = {
 	"AceInTheHole" : "res://Scenes/powerUps/ace_in_the_hole.tscn",
 	"DoubleDown" : "res://Scenes/powerUps/double_down.tscn",
 	"Slurp" : "res://Scenes/powerUps/slurp.tscn",
-	"Rawr" : "res://Scenes/powerUps/rawr.tscn"
+	"Rawr" : "res://Scenes/powerUps/rawr.tscn",
+	"Peek" : "res://Scenes/powerUps/peek.tscn"
 }

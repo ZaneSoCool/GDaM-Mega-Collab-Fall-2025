@@ -186,6 +186,11 @@ func dealCard(cards : Array[Card], faceUp : bool, cardToDeal : Array):
 	var card_info : Array = cardToDeal #index 0 is id, index 1 is suit
 	
 	if cardToDeal == []: #get random card from deck
+		
+		if Global.deck.is_empty():
+			print("DECK EMPTY ERROR")
+			return
+		
 		card_info = Global.deck[Global.deck.size()-1]
 		Global.deck.remove_at(Global.deck.size()-1)
 	

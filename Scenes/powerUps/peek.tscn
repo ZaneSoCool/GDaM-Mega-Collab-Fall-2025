@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c54f61x5q62eq"]
+
+[ext_resource type="Script" uid="uid://btxo6yjbm3q6k" path="res://Scripts/powerUps/peek.gd" id="1_pmma0"]
+
+[node name="peek" type="Button" unique_id=1893559602]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_pmma0")
+powerUpName = "Peek"
+description = "If you have two eye cards in hand, peek at the top card of the deck."
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1409436763]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1299038983]
+modulate = Color(1, 0.6039216, 1, 0.42352942)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
